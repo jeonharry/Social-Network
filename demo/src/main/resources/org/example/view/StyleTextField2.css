@@ -1,0 +1,7 @@
+.text-field{
+    -fx-background-color: #131313 ;
+    -fx-prompt-text-fill: #b7b7b7;
+    -fx-text-fill: #dfdfdf;
+    -fx-border-color: #919191;
+    -fx-border-width: 0.5;
+}
