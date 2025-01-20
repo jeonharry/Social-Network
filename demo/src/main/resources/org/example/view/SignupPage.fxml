@@ -48,14 +48,6 @@
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label prefHeight="20.0" prefWidth="238.0" text="Sorry, your password was incorrect" textFill="#e41e1e">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
                   <StackPane onMouseClicked="#next" prefHeight="35.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#3185d4" height="35.0" stroke="BLACK" strokeType="INSIDE" width="258.0">
