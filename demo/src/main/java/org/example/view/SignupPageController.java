@@ -17,6 +17,7 @@ import model.exceptions.UserNameExists;
 import model.exceptions.WeakPassword;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class SignupPageController{
 
@@ -37,33 +38,49 @@ public class SignupPageController{
 
     @FXML
     void next(MouseEvent event) {
-        int count=0;
         try
         {
-//            UserController.getUserController().signup(username.getText(),fullName.getText(),password.getText());
+            UserController.getUserController().signup(username.getText(),fullName.getText(),password.getText(),email.getText(),new Date(),"","");
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
             Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
         }catch (NotValidEmail exception)
         {
+            if(vbox.getChildren().get(2) instanceof Label)
+                vbox.getChildren().remove(2);
             Label error=makeLabel(exception.getMessage());
             vbox.getChildren().add(2,error);
-            count++;
         }
         catch (WeakPassword exception)
         {
+            if(vbox.getChildren().get(2) instanceof Label)
+                vbox.getChildren().remove(2);
+            if(vbox.getChildren().get(4) instanceof Label)
+                vbox.getChildren().remove(4);
             Label error=makeLabel(exception.getMessage());
-            vbox.getChildren().add(4+count,error);
-            count++;
+            vbox.getChildren().add(4,error);
         }
         catch (UserNameExists exception)
         {
+            if(vbox.getChildren().get(2) instanceof Label)
+                vbox.getChildren().remove(2);
+            if(vbox.getChildren().get(4) instanceof Label)
+                vbox.getChildren().remove(4);
+            if(vbox.getChildren().get(5) instanceof Label)
+                vbox.getChildren().remove(5);
             Label error=makeLabel(exception.getMessage());
-            vbox.getChildren().add(5+count,error);
-            count++;
+            vbox.getChildren().add(5,error);
         }
         catch (Exception exception){
+            if(vbox.getChildren().get(2) instanceof Label)
+                vbox.getChildren().remove(2);
+            if(vbox.getChildren().get(4) instanceof Label)
+                vbox.getChildren().remove(4);
+            if(vbox.getChildren().get(5) instanceof Label)
+                vbox.getChildren().remove(5);
+            if(vbox.getChildren().get(6) instanceof Label)
+                vbox.getChildren().remove(6);
             Label error=makeLabel(exception.getMessage());
-            vbox.getChildren().add(6+count,error);
+            vbox.getChildren().add(6,error);
         }
     }
 

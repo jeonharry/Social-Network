@@ -4,8 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.User;
+import model.database.Database;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class Main extends Application {
     @Override
@@ -18,6 +21,8 @@ public class Main extends Application {
         stage.show();
     }
     public static void main(String[] args) {
+        User user1=new User("jeonharry","harry jeon","1234","jeon666@gmail.com",new Date(),"OK","");
+        Database.getDatabase().add("jeonharry",user1);
         launch();
     }
 }

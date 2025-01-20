@@ -38,7 +38,6 @@ public class LoginPageController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
             Controller.getController().getRoot().getChildren().clear();
             Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
-//            Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
         }catch (Exception exception)
         {
             error.setText(exception.getMessage());
