@@ -1,6 +1,7 @@
 package org.example.view;
 
 import controller.Controller;
+import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,7 +31,19 @@ public class LoginPageController implements Initializable {
 
     @FXML
     void login(MouseEvent event) {
-
+        try
+        {
+            UserController.getUserController().login(username.getText(),password.getText());
+            error.setVisible(false);
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
+            Controller.getController().getRoot().getChildren().clear();
+            Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
+//            Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
+        }catch (Exception exception)
+        {
+            error.setText(exception.getMessage());
+            error.setVisible(true);
+        }
     }
 
     @FXML
@@ -41,6 +54,7 @@ public class LoginPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        error.setVisible(false);
         Controller.getController().setRoot(root);
     }
 }
