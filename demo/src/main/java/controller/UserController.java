@@ -38,12 +38,12 @@ public class UserController {
     {
         user=null;
     }
-    public void signup(String username, String password, String email, Date birthdate, String bio, String profile) throws Exception {
+    public void signup(String username, String fullName,String password, String email, Date birthdate, String bio, String profile) throws Exception {
         if(Database.getDatabase().exist(username))
             throw new UserNameExists();
         //regexes
         String regex="";
-        user=new User(username,password,email,birthdate,bio,profile);
+        user=new User(username,fullName,password,email,birthdate,bio,profile);
         Database.getDatabase().add(username,user);
     }
 }
