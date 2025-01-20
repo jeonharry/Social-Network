@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
@@ -10,6 +11,7 @@ public class User {
     private Date birthdate;
     private String bio;
     private String profile;
+    private final ArrayList<Post> posts;
 
     public User(String username, String fullName,String password, String email, Date birthdate, String bio, String profile) {
         this.username = username;
@@ -19,6 +21,7 @@ public class User {
         this.birthdate = birthdate;
         this.bio = bio;
         this.profile = profile;
+        this.posts = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -62,5 +65,8 @@ public class User {
     }
     public void setProfile(String profile) {
         this.profile = profile;
+    }
+    public ArrayList<Post> getPosts() {
+        return posts;
     }
 }
