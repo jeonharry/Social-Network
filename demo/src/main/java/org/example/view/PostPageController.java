@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.Post;
@@ -51,11 +52,11 @@ public class PostPageController implements Initializable {
     private static Post openedPost;
 
     @FXML
+    private VBox moreOptions;
+
+    @FXML
     void back(MouseEvent event) throws IOException {
-        UserPageController.setUser(Controller.getController().getUsersProfiles().peek());
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
-        Main.getStage().setScene(new Scene(fxmlLoader.load(),750,650));
-        Controller.getController().getOpenedPosts().pop();
+        back();
     }
 
     @FXML
@@ -101,5 +102,28 @@ public class PostPageController implements Initializable {
 
     public static void setOpenedPost(Post openedPost) {
         PostPageController.openedPost = openedPost;
+    }
+
+    @FXML
+    void openMoreOptions(MouseEvent event) {
+        moreOptions.setVisible(!moreOptions.isVisible());
+    }
+
+    @FXML
+    void deletePost(MouseEvent event) throws IOException {
+        openedPost.getOwner().getPosts().remove(openedPost);
+        back();
+    }
+
+    @FXML
+    void editPost(MouseEvent event) {
+
+    }
+
+    private void back() throws IOException {
+        UserPageController.setUser(Controller.getController().getUsersProfiles().peek());
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
+        Main.getStage().setScene(new Scene(fxmlLoader.load(),700,650));
+        Controller.getController().getOpenedPosts().pop();
     }
 }

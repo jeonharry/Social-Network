@@ -77,4 +77,9 @@ public class UserController {
             throw new WeakPassword();
         user=new User(username,fullName,password,email,profile);
     }
+    public void delete()
+    {
+        Database.getDatabase().getUsers().remove(user.getUsername());
+//        Database.getDatabase().getConnections().remove(user.getUsername());
+    }
 }

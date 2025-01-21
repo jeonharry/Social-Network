@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.Post;
@@ -61,6 +62,9 @@ public class UserPageController implements Initializable {
     private static User user;
 
     @FXML
+    private VBox moreOptions;
+
+    @FXML
     void newPost(MouseEvent event) {
 
     }
@@ -72,7 +76,7 @@ public class UserPageController implements Initializable {
 
     @FXML
     void showMenu(MouseEvent event) {
-
+        moreOptions.setVisible(!moreOptions.isVisible());
     }
 
     @FXML
@@ -106,6 +110,7 @@ public class UserPageController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
+        moreOptions.setVisible(false);
     }
 
     public static User getUser() {
@@ -114,5 +119,28 @@ public class UserPageController implements Initializable {
 
     public static void setUser(User user) {
         UserPageController.user = user;
+    }
+
+    @FXML
+    void editProfile(MouseEvent event) {
+
+    }
+
+    @FXML
+    void logout(MouseEvent event) throws IOException {
+        logout();
+    }
+
+    public void logout() throws IOException {
+        UserController.getUserController().logout();
+        Controller.getController().getUsersProfiles().pop();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
+        Controller.getController().getRoot().getChildren().clear();
+        Controller.getController().getRoot().getChildren().add(fxmlLoader.load());
+    }
+    @FXML
+    void deleteAccount(MouseEvent event) throws IOException {
+        UserController.getUserController().delete();
+        logout();
     }
 }
