@@ -3,7 +3,9 @@ package org.example.view;
 import controller.Controller;
 import controller.UserController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,6 +15,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.Post;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -48,8 +51,9 @@ public class PostPageController implements Initializable {
     private static Post openedPost;
 
     @FXML
-    void back(MouseEvent event) {
-        Controller.getController().getRoot().getChildren().removeLast();
+    void back(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
+        Main.getStage().setScene(new Scene(fxmlLoader.load(),750,650));
     }
 
     @FXML
@@ -58,11 +62,13 @@ public class PostPageController implements Initializable {
         {
             like_img.setImage(new Image(Main.class.getResource("pics/Clipped_image_20250121_160734.png").toExternalForm()));
             openedPost.getLikes().remove(UserController.getUserController().getUser().getUsername());
+            lbl_likeNumber.setText(String.valueOf(openedPost.getLikes().size()));
         }
         else
         {
-            like_img.setImage(new Image(Main.class.getResource("pics/").toExternalForm()));
+            like_img.setImage(new Image(Main.class.getResource("pics/Clipped_image_20250121_165246.png").toExternalForm()));
             openedPost.getLikes().add(UserController.getUserController().getUser().getUsername());
+            lbl_likeNumber.setText(String.valueOf(openedPost.getLikes().size()));
         }
     }
 
@@ -77,8 +83,9 @@ public class PostPageController implements Initializable {
         lbl_caption.setText(openedPost.getCaption());
         lbl_likeNumber.setText(String.valueOf(openedPost.getLikes().size()));
         lbl_commentNumber.setText(String.valueOf(openedPost.getComments().size()));
-        ImagePattern imagePattern=new ImagePattern(new Image(openedPost.getImage()));
+        ImagePattern imagePattern=new ImagePattern(new Image(openedPost.getOwner().getProfile()));
         prof_img.setFill(imagePattern);
+        img_post.setImage(new Image(openedPost.getImage()));
         if(openedPost.getLikes().contains(UserController.getUserController().getUser().getUsername()))
             like_img.setImage(new Image(Main.class.getResource("pics/Clipped_image_20250121_165246.png").toExternalForm()));
     }

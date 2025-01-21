@@ -1,5 +1,6 @@
 package org.example.view;
 
+import controller.Controller;
 import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,6 +70,7 @@ public class UserPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Controller.getController().setRoot(root);
         lbl_username.setText(UserController.getUserController().getUser().getUsername());
         lbl_bio.setText(UserController.getUserController().getUser().getBio());
         lbl_postsNumber.setText(String.valueOf(UserController.getUserController().getUser().getPosts().size()));
