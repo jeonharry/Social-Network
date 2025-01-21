@@ -38,6 +38,7 @@ public class DatePickController implements Initializable {
         int m=getMonth(month.getText());
         String d=year.getText()+"/"+String.valueOf(m)+"/"+date.getText();
         UserController.getUserController().levelTwoSignup(d);
+        UserPageController.setUser(UserController.getUserController().getUser());
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
         Controller.getController().getRoot().getChildren().clear();
         Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());

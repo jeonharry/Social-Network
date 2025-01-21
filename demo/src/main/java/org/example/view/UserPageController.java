@@ -14,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.Post;
+import model.User;
 import model.database.Database;
 
 import java.io.IOException;
@@ -53,6 +54,8 @@ public class UserPageController implements Initializable {
     @FXML
     private AnchorPane root;
 
+    private static User user;
+
     @FXML
     void newPost(MouseEvent event) {
 
@@ -71,15 +74,15 @@ public class UserPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Controller.getController().setRoot(root);
-        lbl_username.setText(UserController.getUserController().getUser().getUsername());
-        lbl_bio.setText(UserController.getUserController().getUser().getBio());
-        lbl_postsNumber.setText(String.valueOf(UserController.getUserController().getUser().getPosts().size()));
-        lbl_fullName.setText(UserController.getUserController().getUser().getFullName());
-        lbl_connectionsNumber.setText(String.valueOf(Database.getDatabase().getConnections().values(UserController.getUserController().getUser().getUsername()).size()));
-        ImagePattern profile = new ImagePattern(new Image(UserController.getUserController().getUser().getProfile()));
+        lbl_username.setText(user.getUsername());
+        lbl_bio.setText(user.getBio());
+        lbl_postsNumber.setText(String.valueOf(user.getPosts().size()));
+        lbl_fullName.setText(user.getFullName());
+        lbl_connectionsNumber.setText(String.valueOf(Database.getDatabase().getConnections().values(user.getUsername()).size()));
+        ImagePattern profile = new ImagePattern(new Image(user.getProfile()));
         crl_profile.setFill(profile);
         int counter = 0;
-        for(Post post : UserController.getUserController().getUser().getPosts()){
+        for(Post post : user.getPosts()){
             ImagePostController.setRecently(post);
             try {
                 grid_posts.add(new FXMLLoader(Main.class.getResource("ImagePost.fxml")).load(),counter%3, counter++/3);
@@ -87,5 +90,13 @@ public class UserPageController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public static User getUser() {
+        return user;
+    }
+
+    public static void setUser(User user) {
+        UserPageController.user = user;
     }
 }

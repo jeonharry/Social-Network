@@ -60,6 +60,7 @@ public class LoginPageController implements Initializable {
             {
                 UserController.getUserController().login(username.getText(),password.getText());
                 error.setVisible(false);
+                UserPageController.setUser(UserController.getUserController().getUser());
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
                 Controller.getController().getRoot().getChildren().clear();
                 Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
