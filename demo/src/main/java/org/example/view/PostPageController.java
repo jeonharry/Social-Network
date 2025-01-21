@@ -73,8 +73,11 @@ public class PostPageController implements Initializable {
     }
 
     @FXML
-    void openComments(MouseEvent event) {
-
+    void openComments(MouseEvent event) throws IOException {
+        Controller.getController().setRoot(root);
+        CommentsPageController.setPost(openedPost);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("CommentsPage.fxml"));
+        Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
     }
 
     @Override
