@@ -53,9 +53,9 @@
          </font>
       </Label>
       <ImageView fx:id="img_menu" fitHeight="35.0" fitWidth="48.0" layoutX="667.0" layoutY="33.0" onMouseClicked="#showMenu" pickOnBounds="true" preserveRatio="true" />
-      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="26.0" layoutY="336.0" minViewportHeight="220.0" minViewportWidth="660.0" prefHeight="303.0" prefViewportHeight="220.0" prefViewportWidth="660.0" prefWidth="692.0">
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="37.0" layoutY="332.0" minViewportHeight="220.0" minViewportWidth="660.0" prefHeight="303.0" prefViewportHeight="220.0" prefViewportWidth="660.0" prefWidth="667.0" style="-fx-background-color: black;">
          <content>
-            <GridPane fx:id="grid_posts" maxHeight="440.0" maxWidth="660.0" prefHeight="440.0" prefWidth="660.0">
+            <GridPane fx:id="grid_posts" maxHeight="440.0" maxWidth="660.0" prefHeight="440.0" prefWidth="660.0" style="-fx-background-color: black;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="220.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="220.0" prefWidth="220.0" />

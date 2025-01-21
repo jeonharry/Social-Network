@@ -38,7 +38,7 @@
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
                   </TextField>
-                  <PasswordField fx:id="password" prefHeight="40.0" prefWidth="308.0" promptText="Password" stylesheets="@StyleTextField2.css">
+                  <PasswordField fx:id="password" onKeyReleased="#checkPassword" prefHeight="40.0" prefWidth="308.0" promptText="Password" stylesheets="@StyleTextField2.css">
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
