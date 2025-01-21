@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
@@ -55,7 +56,7 @@
       <ImageView fx:id="img_menu" fitHeight="35.0" fitWidth="48.0" layoutX="667.0" layoutY="33.0" onMouseClicked="#showMenu" pickOnBounds="true" preserveRatio="true" />
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="37.0" layoutY="332.0" minViewportHeight="220.0" minViewportWidth="660.0" prefHeight="303.0" prefViewportHeight="220.0" prefViewportWidth="660.0" prefWidth="710.0" style="-fx-background-color: black;" stylesheets="@StyleScrollBar.css">
          <content>
-            <GridPane fx:id="grid_posts" maxHeight="440.0" maxWidth="693.0" prefHeight="396.0" prefWidth="693.0" style="-fx-background-color: black;">
+            <GridPane fx:id="grid_posts" alignment="TOP_CENTER" maxHeight="440.0" maxWidth="693.0" prefHeight="396.0" prefWidth="693.0" style="-fx-background-color: black;">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="220.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="220.0" prefWidth="220.0" />
@@ -66,8 +67,11 @@
                 <RowConstraints maxHeight="245.5999755859375" minHeight="200.79998779296875" prefHeight="239.199951171875" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fx:id="img_plus" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#newPost" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img_plus" fitHeight="80.0" fitWidth="101.0" onMouseClicked="#newPost" pickOnBounds="true" preserveRatio="true" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </GridPane>
          </content>
       </ScrollPane>

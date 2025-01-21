@@ -34,6 +34,6 @@ public class ImagePostController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.post = recently;
-        img_post.setImage(new Image(Objects.requireNonNull(Main.class.getResource(post.getImage())).toExternalForm()));
+        img_post.setImage(new Image(post.getImage()));
     }
 }
