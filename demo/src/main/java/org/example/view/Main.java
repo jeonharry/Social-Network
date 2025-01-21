@@ -21,7 +21,7 @@ public class Main extends Application {
         stage.show();
     }
     public static void main(String[] args) {
-        User user1=new User("jeonharry","harry jeon","1234","jeon666@gmail.com",new Date(),"OK",Main.class.getResource("pic1.jpg").toExternalForm());
+        User user1=new User("jeonharry","harry jeon","1234","jeon666@gmail.com",new Date(),"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
         Database.getDatabase().add("jeonharry",user1);
         launch();
     }

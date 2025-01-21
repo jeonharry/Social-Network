@@ -81,7 +81,7 @@ public class SignupPageController{
         {
             try
             {
-                UserController.getUserController().levelOneSignup(username.getText(),fullName.getText(),password.getText(),email.getText(),Main.class.getResource("images(5).png").toExternalForm());
+                UserController.getUserController().levelOneSignup(username.getText(),fullName.getText(),password.getText(),email.getText(),Main.class.getResource("pics/images(5).png").toExternalForm());
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DatePickPage.fxml"));
                 Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
             }catch (NotValidEmail exception)

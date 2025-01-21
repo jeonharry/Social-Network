@@ -9,12 +9,14 @@ public class Post {
     private String caption;
     private final ArrayList<Comment> comments;
     private final Set<String> likes;
+    private User owner;
 
-    public Post(String image, String caption) {
+    public Post(String image, String caption,User owner) {
         this.image = image;
         this.caption = caption;
         this.comments = new ArrayList<>();
         this.likes = new HashSet<>();
+        this.owner=owner;
     }
 
     public String getImage() {
@@ -45,5 +47,10 @@ public class Post {
     public boolean isLike(String user){
         return likes.contains(user);
     }
-
+    public User getOwner() {
+        return owner;
+    }
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 }

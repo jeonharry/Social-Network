@@ -1,43 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.PostPageController">
+<AnchorPane fx:id="root" prefHeight="680.0" prefWidth="460.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.PostPageController">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="153.0" layoutY="82.0" prefHeight="486.0" prefWidth="443.0">
+      <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="40.0" prefHeight="55.0" prefWidth="440.0" spacing="10.0">
          <children>
-            <ImageView fx:id="img_post" fitHeight="150.0" fitWidth="302.0" pickOnBounds="true" preserveRatio="true">
+            <Circle fx:id="prof_img" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="username_lbl" text="username" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox alignment="TOP_CENTER" layoutY="104.0" prefHeight="576.0" prefWidth="460.0">
+         <children>
+            <ImageView fx:id="img_post" fitHeight="458.0" fitWidth="458.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets bottom="20.0" />
                </VBox.margin>
             </ImageView>
-            <HBox prefHeight="71.0" prefWidth="507.0">
+            <HBox prefHeight="35.0" prefWidth="178.0" spacing="10.0">
                <children>
-                  <Label fx:id="lbl_caption" text="caption" textFill="WHITE" />
-                  <ImageView fx:id="img_like" fitHeight="41.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="lbl_likeNumber" text="0" textFill="WHITE" />
+                  <ImageView fx:id="like_img" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#like" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pics/Clipped_image_20250121_160734.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></ImageView>
+                  <Label fx:id="lbl_likeNumber" text="0" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin></Label>
+                  <ImageView fitHeight="23.0" fitWidth="23.0" onMouseClicked="#openComments" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pics/Clipped_image_20250121_160828.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label fx:id="lbl_commentNumber" text="0" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
             </HBox>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;">
-               <content>
-                  <VBox fx:id="vBox_comments" prefHeight="200.0" prefWidth="466.0" style="-fx-background-color: black; -fx-border-color: black;" />
-               </content>
-            </ScrollPane>
-            <HBox prefHeight="35.0" prefWidth="507.0">
-               <children>
-                  <TextField fx:id="txtField_comment" prefHeight="37.0" prefWidth="470.0" promptText="Add a comment..." style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 30;" />
-                  <ImageView fx:id="img_send" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#sendComment" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </HBox>
+            <Label fx:id="lbl_caption" alignment="TOP_LEFT" prefHeight="63.0" prefWidth="445.0" text="caption" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="15.0" top="3.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
-      <ImageView fx:id="img_menu" fitHeight="41.0" fitWidth="49.0" layoutX="661.0" layoutY="14.0" onMouseClicked="#openMenu" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="back_img" fitHeight="18.0" fitWidth="22.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pics/Clipped_image_20250121_160218.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ImageView>
    </children>
 </AnchorPane>

@@ -22,7 +22,7 @@
                <children>
                   <ImageView fitHeight="119.0" fitWidth="171.0" pickOnBounds="true">
                      <image>
-                        <Image url="@Screenshot%202025-01-2055%20211009.png" />
+                        <Image url="@pics/Screenshot%202025-01-2055%20211009.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="30.0" />
