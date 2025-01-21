@@ -38,17 +38,9 @@ public class UserController {
     {
         user=null;
     }
-    public void signup(String username, String fullName,String password, String email, Date birthdate, String bio, String profile) throws UserNameExists,NotValidEmail, WeakPassword {
-        if(Database.getDatabase().exist(username))
-            throw new UserNameExists();
-        String emailRegex="^[^(\\.|\\W)](?=\\d*[a-zA-Z])([a-zA-Z0-9]\\.?){1,25}[^(\\.|\\W)]@(?=\\d*[a-zA-Z])([a-zA-Z0-9]-?){2,28}[^\\W-]\\.[a-zA-Z]{2,20}$";
-        Pattern emailPattern=Pattern.compile(emailRegex);
-        if(!emailPattern.matcher(email).matches())
-            throw new NotValidEmail();
-        if(checkPassword(password) < 3)
-            throw new WeakPassword();
-        user=new User(username,fullName,password,email,birthdate,bio,profile);
-        Database.getDatabase().add(username,user);
+    public void levelTwoSignup(String date) {
+        user.setBirthdate(new Date(date));
+        Database.getDatabase().add(user.getUsername(),user);
     }
     public int checkPassword(String password){
         int score = 0;
@@ -72,5 +64,17 @@ public class UserController {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(str);
         return matcher.find();
+    }
+
+    public void levelOneSignup(String username, String fullName, String password, String email,String profile)throws UserNameExists,NotValidEmail, WeakPassword {
+        if(Database.getDatabase().exist(username))
+            throw new UserNameExists();
+        String emailRegex="^[^(\\.|\\W)](?=\\d*[a-zA-Z])([a-zA-Z0-9]\\.?){1,25}[^(\\.|\\W)]@(?=\\d*[a-zA-Z])([a-zA-Z0-9]-?){2,28}[^\\W-]\\.[a-zA-Z]{2,20}$";
+        Pattern emailPattern=Pattern.compile(emailRegex);
+        if(!emailPattern.matcher(email).matches())
+            throw new NotValidEmail();
+        if(checkPassword(password) < 3)
+            throw new WeakPassword();
+        user=new User(username,fullName,password,email,profile);
     }
 }

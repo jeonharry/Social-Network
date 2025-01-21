@@ -28,12 +28,12 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </ImageView>
-                  <TextField fx:id="username" prefHeight="40.0" prefWidth="238.0" promptText="username" stylesheets="@StyleTextField2.css">
+                  <TextField fx:id="username" onKeyPressed="#changeColor1" prefHeight="40.0" prefWidth="238.0" promptText="username" stylesheets="@StyleTextField2.css">
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
                   </TextField>
-                  <PasswordField fx:id="password" prefHeight="40.0" prefWidth="308.0" promptText="password" stylesheets="@StyleTextField2.css">
+                  <PasswordField fx:id="password" onKeyPressed="#changeColor2" prefHeight="40.0" prefWidth="308.0" promptText="password" stylesheets="@StyleTextField2.css">
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
@@ -45,7 +45,7 @@
                               <Insets />
                            </StackPane.margin>
                         </Rectangle>
-                        <Label text="Log in" textFill="#c1c1c1">
+                        <Label fx:id="loginLabel" text="Log in" textFill="#c1c1c1">
                            <font>
                               <Font name="System Bold" size="13.5" />
                            </font>
