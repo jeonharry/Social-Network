@@ -5,6 +5,7 @@ import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -54,6 +55,9 @@ public class UserPageController implements Initializable {
     @FXML
     private AnchorPane root;
 
+    @FXML
+    private ImageView back_img;
+
     private static User user;
 
     @FXML
@@ -71,6 +75,17 @@ public class UserPageController implements Initializable {
 
     }
 
+    @FXML
+    void back(MouseEvent event) throws IOException {
+        Controller.getController().getUsersProfiles().pop();
+        PostPageController.setOpenedPost(Controller.getController().getOpenedPosts().peek());
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("PostPage.fxml"));
+        Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
+        CommentsPageController.setPost(PostPageController.getOpenedPost());
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("CommentsPage.fxml"));
+        Controller.getController().getRoot().getChildren().addLast(loader.load());
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Controller.getController().setRoot(root);
@@ -81,6 +96,7 @@ public class UserPageController implements Initializable {
         lbl_connectionsNumber.setText(String.valueOf(Database.getDatabase().getConnections().values(user.getUsername()).size()));
         ImagePattern profile = new ImagePattern(new Image(user.getProfile()));
         crl_profile.setFill(profile);
+        back_img.setVisible(user.getUsername().compareTo(UserController.getUserController().getUser().getUsername())!=0);
         int counter = 0;
         for(Post post : user.getPosts()){
             ImagePostController.setRecently(post);

@@ -52,8 +52,10 @@ public class PostPageController implements Initializable {
 
     @FXML
     void back(MouseEvent event) throws IOException {
+        UserPageController.setUser(Controller.getController().getUsersProfiles().peek());
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
         Main.getStage().setScene(new Scene(fxmlLoader.load(),750,650));
+        Controller.getController().getOpenedPosts().pop();
     }
 
     @FXML
@@ -74,7 +76,6 @@ public class PostPageController implements Initializable {
 
     @FXML
     void openComments(MouseEvent event) throws IOException {
-        Controller.getController().setRoot(root);
         CommentsPageController.setPost(openedPost);
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("CommentsPage.fxml"));
         Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
@@ -82,6 +83,7 @@ public class PostPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Controller.getController().setRoot(root);
         username_lbl.setText(openedPost.getOwner().getUsername());
         lbl_caption.setText(openedPost.getCaption());
         lbl_likeNumber.setText(String.valueOf(openedPost.getLikes().size()));

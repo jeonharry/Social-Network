@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
+import model.database.Database;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,6 +65,7 @@ public class LoginPageController implements Initializable {
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
                 Controller.getController().getRoot().getChildren().clear();
                 Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
+                Controller.getController().getUsersProfiles().push(Database.getDatabase().getUser(username.getText()));
             }catch (Exception exception)
             {
                 error.setText(exception.getMessage());

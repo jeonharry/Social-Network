@@ -164,5 +164,13 @@
             </GridPane>
          </content>
       </ScrollPane>
+      <ImageView fx:id="back_img" fitHeight="18.0" fitWidth="22.0" layoutX="13.0" layoutY="23.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@pics/Clipped_image_20250121_160218.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>

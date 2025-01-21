@@ -1,5 +1,6 @@
 package org.example.view;
 
+import controller.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,5 +41,6 @@ public class ImagePostController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.post = recently;
         img_post.setImage(new Image(post.getImage()));
+        Controller.getController().getOpenedPosts().push(post);
     }
 }

@@ -36,6 +36,7 @@ public class CommentPageController implements Initializable {
         if(Database.getDatabase().getConnections().values(UserController.getUserController().getUser().getUsername()).contains(username_lbl.getText()))
         {
             UserPageController.setUser(Database.getDatabase().getUser(username_lbl.getText()));
+            Controller.getController().getUsersProfiles().push(Database.getDatabase().getUser(username_lbl.getText()));
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
             Main.getStage().setScene(new Scene(fxmlLoader.load(),750,650));
         }
