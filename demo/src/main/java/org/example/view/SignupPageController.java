@@ -40,8 +40,8 @@ public class SignupPageController{
     void next(MouseEvent event) {
         try
         {
-            UserController.getUserController().signup(username.getText(),fullName.getText(),password.getText(),email.getText(),new Date(),"","");
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
+            UserController.getUserController().levelOneSignup(username.getText(),fullName.getText(),password.getText(),email.getText());
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DatePickPage.fxml"));
             Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
         }catch (NotValidEmail exception)
         {

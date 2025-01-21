@@ -23,6 +23,9 @@ public class User {
         this.profile = profile;
         this.posts = new ArrayList<>();
     }
+    public User(String username, String fullName,String password, String email) {
+        this(username,fullName,password,email,new Date(),"","");
+    }
 
     public String getUsername() {
         return username;

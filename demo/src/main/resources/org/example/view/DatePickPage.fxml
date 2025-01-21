@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.DatePickController">
+   <children>
+      <VBox layoutX="225.0" layoutY="60.0" prefHeight="490.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: black;">
+         <children>
+            <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="420.0" prefWidth="300.0" spacing="10.0" style="-fx-border-color: #919191; -fx-background-color: black; -fx-border-width: 0.6;">
+               <children>
+                  <ImageView fitHeight="119.0" fitWidth="171.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@Screenshot%202025-01-2055%20211009.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <MenuButton fx:id="month" accessibleRole="CHECK_BOX" mnemonicParsing="false" prefHeight="33.0" prefWidth="95.0" stylesheets="@StyleMenuButton.css" text="January">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="January" />
+                            <MenuItem mnemonicParsing="false" text="February" />
+                              <MenuItem mnemonicParsing="false" text="March" />
+                              <MenuItem mnemonicParsing="false" text="April" />
+                              <MenuItem mnemonicParsing="false" text="May" />
+                              <MenuItem mnemonicParsing="false" text="June" />
+                              <MenuItem mnemonicParsing="false" text="July" />
+                              <MenuItem mnemonicParsing="false" text="August" />
+                              <MenuItem mnemonicParsing="false" text="September" />
+                              <MenuItem mnemonicParsing="false" text="October" />
+                              <MenuItem mnemonicParsing="false" text="November" />
+                              <MenuItem mnemonicParsing="false" text="December" />
+                          </items>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </MenuButton>
+                        <MenuButton fx:id="date" mnemonicParsing="false" prefHeight="33.0" prefWidth="45.0" stylesheets="@StyleMenuButton.css" text="1">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </MenuButton>
+                        <MenuButton fx:id="year" mnemonicParsing="false" prefHeight="33.0" prefWidth="60.0" stylesheets="@StyleMenuButton.css" text="2025">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+                  <StackPane onMouseClicked="#next" prefHeight="35.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#3185d4" height="35.0" stroke="BLACK" strokeType="INSIDE" width="258.0">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Rectangle>
+                        <Label text="Next" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.5" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="25.0" right="25.0" top="5.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </StackPane>
+                  <Label onMouseClicked="#goBack" text="Go Back" textFill="#00aeff">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="280.0" style="-fx-background-color: black; -fx-border-color: #919191; -fx-border-width: 0.6;">
+               <children>
+                  <Label text="Have an account? " textFill="WHITE" />
+                  <Label onMouseClicked="#openLoginPage" text="Log in" textFill="#00aeff">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

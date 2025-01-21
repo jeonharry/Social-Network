@@ -51,4 +51,19 @@ public class UserController {
         user=new User(username,fullName,password,email,birthdate,bio,profile);
         Database.getDatabase().add(username,user);
     }
+    public void levelOneSignup(String username, String fullName,String password, String email) throws UserNameExists,NotValidEmail, WeakPassword
+    {
+        if(Database.getDatabase().exist(username))
+            throw new UserNameExists();
+        String emailRegex="^[^(\\.|\\W)](?=\\d*[a-zA-Z])([a-zA-Z0-9]\\.?){1,25}[^(\\.|\\W)]@(?=\\d*[a-zA-Z])([a-zA-Z0-9]-?){2,28}[^\\W-]\\.[a-zA-Z]{2,20}$";
+        String passwordRegex="^$";
+        Pattern emailPattern=Pattern.compile(emailRegex);
+        Pattern passwordPattern=Pattern.compile(passwordRegex);
+        if(!emailPattern.matcher(email).matches())
+            throw new NotValidEmail();
+        if(!passwordPattern.matcher(password).matches())
+            throw new WeakPassword();
+        user=new User(username,fullName,password,email);
+        //edit signup
+    }
 }
