@@ -63,7 +63,7 @@ public class UserPageController implements Initializable {
         lbl_postsNumber.setText(String.valueOf(UserController.getUserController().getUser().getPosts().size()));
         lbl_fullName.setText(UserController.getUserController().getUser().getFullName());
         lbl_connectionsNumber.setText(String.valueOf(Database.getDatabase().getConnections().values(UserController.getUserController().getUser().getUsername()).size()));
-        ImagePattern profile = new ImagePattern(new Image(Objects.requireNonNull(Main.class.getResource(UserController.getUserController().getUser().getProfile())).toExternalForm()));
+        ImagePattern profile = new ImagePattern(new Image(Objects.requireNonNull(UserController.getUserController().getUser().getProfile())));
         crl_profile.setFill(profile);
     }
 }

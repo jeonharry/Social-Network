@@ -31,6 +31,7 @@ public class Graph {
      private void insertValue(String key, String value){
         if(!graph.containsKey(key))
             graph.put(key, new ArrayList<>());
-        graph.get(key).add(value);
+        if(value!=null)
+            graph.get(key).add(value);
      }
 }

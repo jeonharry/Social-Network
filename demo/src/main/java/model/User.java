@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class User {
@@ -8,7 +9,7 @@ public class User {
     private String fullName;
     private String password;
     private String email;
-    private Date birthdate;
+    private Calendar birthdate;
     private String bio;
     private String profile;
     private final ArrayList<Post> posts;
@@ -18,13 +19,14 @@ public class User {
         this.fullName = fullName;
         this.password = password;
         this.email = email;
-        this.birthdate = birthdate;
+        this.birthdate =Calendar.getInstance();
+        this.birthdate.setTime(birthdate);
         this.bio = bio;
         this.profile = profile;
         this.posts = new ArrayList<>();
     }
-    public User(String username, String fullName,String password, String email) {
-        this(username,fullName,password,email,new Date(),"","");
+    public User(String username, String fullName,String password, String email,String profile) {
+        this(username,fullName,password,email,new Date(),"",profile);
     }
 
     public String getUsername() {
@@ -51,11 +53,12 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Date getBirthdate() {
+    public Calendar getBirthdate() {
         return birthdate;
     }
     public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+        this.birthdate =Calendar.getInstance();
+        this.birthdate.setTime(birthdate);
     }
     public String getBio() {
         return bio;

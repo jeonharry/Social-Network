@@ -1,6 +1,7 @@
 package org.example.view;
 
 import controller.Controller;
+import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -35,9 +36,10 @@ public class DatePickController implements Initializable {
     @FXML
     void next(MouseEvent event) throws IOException {
         int m=getMonth(month.getText());
-        String d=year.getText()+String.valueOf(m)+date.getText();
-        //signup
+        String d=year.getText()+"/"+String.valueOf(m)+"/"+date.getText();
+        UserController.getUserController().levelTwoSignup(d);
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
+        Controller.getController().getRoot().getChildren().clear();
         Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
     }
 
