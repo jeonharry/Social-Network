@@ -7,8 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -35,6 +37,34 @@ public class SignupPageController{
 
     @FXML
     private VBox vbox;
+
+    @FXML
+    void checkPassword(KeyEvent event) {
+        int score = UserController.getUserController().checkPassword(password.getText());
+        if(vbox.getChildren().get(2) instanceof Label) vbox.getChildren().remove(2);
+        if(vbox.getChildren().get(4) instanceof Label) vbox.getChildren().remove(4);
+        Label error;
+        switch (score) {
+            case 1,0 -> {
+                error=makeLabel("Very Weak");
+                error.setTextFill(Color.RED);
+            }
+            case 2, 3 -> {
+                error=makeLabel("Weak");
+                error.setTextFill(Color.ORANGE);
+            }
+            case 4 -> {
+                error=makeLabel("Good");
+                error.setTextFill(Color.YELLOWGREEN);
+            }
+            default -> {
+                error=makeLabel("Strong");
+                error.setTextFill(Color.GREEN);
+            }
+        }
+        vbox.getChildren().add(4,error);
+    }
+
 
     @FXML
     void next(MouseEvent event) {

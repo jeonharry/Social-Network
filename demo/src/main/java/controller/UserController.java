@@ -5,6 +5,7 @@ import model.database.Database;
 import model.exceptions.*;
 
 import java.util.Date;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserController {
@@ -41,14 +42,35 @@ public class UserController {
         if(Database.getDatabase().exist(username))
             throw new UserNameExists();
         String emailRegex="^[^(\\.|\\W)](?=\\d*[a-zA-Z])([a-zA-Z0-9]\\.?){1,25}[^(\\.|\\W)]@(?=\\d*[a-zA-Z])([a-zA-Z0-9]-?){2,28}[^\\W-]\\.[a-zA-Z]{2,20}$";
-        String passwordRegex="^$";
         Pattern emailPattern=Pattern.compile(emailRegex);
-        Pattern passwordPattern=Pattern.compile(passwordRegex);
         if(!emailPattern.matcher(email).matches())
             throw new NotValidEmail();
-        if(!passwordPattern.matcher(password).matches())
+        if(checkPassword(password) < 3)
             throw new WeakPassword();
         user=new User(username,fullName,password,email,birthdate,bio,profile);
         Database.getDatabase().add(username,user);
+    }
+    public int checkPassword(String password){
+        int score = 0;
+        if(password.length() >= 8)
+            score ++;
+
+        if(checkRegex("^(?=.*[0-9])",password))
+            score ++;
+
+        if(checkRegex("^(?=.*[a-z])",password))
+            score ++;
+
+        if(checkRegex("^(?=.*[A-Z])",password))
+            score ++;
+
+        if(checkRegex("^(?=.*[@#$%^&+=])",password))
+            score ++;
+        return score;
+    }
+    private boolean checkRegex(String regex, String str){
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
+        return matcher.find();
     }
 }
