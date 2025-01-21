@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.PostPageController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="153.0" layoutY="82.0" prefHeight="486.0" prefWidth="443.0">
+         <children>
+            <ImageView fx:id="img_post" fitHeight="150.0" fitWidth="302.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <HBox prefHeight="71.0" prefWidth="507.0">
+               <children>
+                  <Label fx:id="lbl_caption" text="caption" textFill="WHITE" />
+                  <ImageView fx:id="img_like" fitHeight="41.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lbl_likeNumber" text="0" textFill="WHITE" />
+               </children>
+            </HBox>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;">
+               <content>
+                  <VBox fx:id="vBox_comments" prefHeight="200.0" prefWidth="466.0" style="-fx-background-color: black; -fx-border-color: black;" />
+               </content>
+            </ScrollPane>
+            <HBox prefHeight="35.0" prefWidth="507.0">
+               <children>
+                  <TextField fx:id="txtField_comment" prefHeight="37.0" prefWidth="470.0" promptText="Add a comment..." style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 30;" />
+                  <ImageView fx:id="img_send" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#sendComment" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <ImageView fx:id="img_menu" fitHeight="41.0" fitWidth="49.0" layoutX="661.0" layoutY="14.0" onMouseClicked="#openMenu" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
