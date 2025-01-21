@@ -28,12 +28,12 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </ImageView>
-                  <TextField fx:id="email" prefHeight="40.0" prefWidth="238.0" promptText="Email" stylesheets="@StyleTextField2.css">
+                  <TextField fx:id="email" onKeyPressed="#changeColor" prefHeight="40.0" prefWidth="238.0" promptText="Email" stylesheets="@StyleTextField2.css">
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="fullName" prefHeight="40.0" prefWidth="238.0" promptText="Full name" stylesheets="@StyleTextField2.css">
+                  <TextField fx:id="fullName" onKeyPressed="#changeColor" prefHeight="40.0" prefWidth="238.0" promptText="Full name" stylesheets="@StyleTextField2.css">
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
@@ -43,7 +43,7 @@
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <TextField fx:id="username" prefHeight="40.0" prefWidth="238.0" promptText="Username" stylesheets="@StyleTextField2.css">
+                  <TextField fx:id="username" onKeyPressed="#changeColor" prefHeight="40.0" prefWidth="238.0" promptText="Username" stylesheets="@StyleTextField2.css">
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
@@ -55,7 +55,7 @@
                               <Insets />
                            </StackPane.margin>
                         </Rectangle>
-                        <Label text="Next" textFill="#c1c1c1">
+                        <Label fx:id="nextLabel" text="Next" textFill="#c1c1c1">
                            <font>
                               <Font name="System Bold" size="13.5" />
                            </font>

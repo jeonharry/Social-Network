@@ -39,6 +39,13 @@ public class SignupPageController{
     private VBox vbox;
 
     @FXML
+    private Label nextLabel;
+    boolean emailEntered=false;
+    boolean fullNameEntered=false;
+    boolean passwordEntered=false;
+    boolean usernameEntered=false;
+
+    @FXML
     void checkPassword(KeyEvent event) {
         int score = UserController.getUserController().checkPassword(password.getText());
         if(vbox.getChildren().get(2) instanceof Label) vbox.getChildren().remove(2);
@@ -55,10 +62,12 @@ public class SignupPageController{
             }
             case 4 -> {
                 error=makeLabel("Good");
+                passwordEntered=true;
                 error.setTextFill(Color.YELLOWGREEN);
             }
             default -> {
                 error=makeLabel("Strong");
+                passwordEntered=true;
                 error.setTextFill(Color.GREEN);
             }
         }
@@ -68,49 +77,52 @@ public class SignupPageController{
 
     @FXML
     void next(MouseEvent event) {
-        try
+        if(passwordEntered && emailEntered && usernameEntered && fullNameEntered)
         {
-            UserController.getUserController().levelOneSignup(username.getText(),fullName.getText(),password.getText(),email.getText(),Main.class.getResource("images(5).png").toExternalForm());
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DatePickPage.fxml"));
-            Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
-        }catch (NotValidEmail exception)
-        {
-            if(vbox.getChildren().get(2) instanceof Label)
-                vbox.getChildren().remove(2);
-            Label error=makeLabel(exception.getMessage());
-            vbox.getChildren().add(2,error);
-        }
-        catch (WeakPassword exception)
-        {
-            if(vbox.getChildren().get(2) instanceof Label)
-                vbox.getChildren().remove(2);
-            if(vbox.getChildren().get(4) instanceof Label)
-                vbox.getChildren().remove(4);
-            Label error=makeLabel(exception.getMessage());
-            vbox.getChildren().add(4,error);
-        }
-        catch (UserNameExists exception)
-        {
-            if(vbox.getChildren().get(2) instanceof Label)
-                vbox.getChildren().remove(2);
-            if(vbox.getChildren().get(4) instanceof Label)
-                vbox.getChildren().remove(4);
-            if(vbox.getChildren().get(5) instanceof Label)
-                vbox.getChildren().remove(5);
-            Label error=makeLabel(exception.getMessage());
-            vbox.getChildren().add(5,error);
-        }
-        catch (Exception exception){
-            if(vbox.getChildren().get(2) instanceof Label)
-                vbox.getChildren().remove(2);
-            if(vbox.getChildren().get(4) instanceof Label)
-                vbox.getChildren().remove(4);
-            if(vbox.getChildren().get(5) instanceof Label)
-                vbox.getChildren().remove(5);
-            if(vbox.getChildren().get(6) instanceof Label)
-                vbox.getChildren().remove(6);
-            Label error=makeLabel(exception.getMessage());
-            vbox.getChildren().add(6,error);
+            try
+            {
+                UserController.getUserController().levelOneSignup(username.getText(),fullName.getText(),password.getText(),email.getText(),Main.class.getResource("images(5).png").toExternalForm());
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DatePickPage.fxml"));
+                Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
+            }catch (NotValidEmail exception)
+            {
+                if(vbox.getChildren().get(2) instanceof Label)
+                    vbox.getChildren().remove(2);
+                Label error=makeLabel(exception.getMessage());
+                vbox.getChildren().add(2,error);
+            }
+            catch (WeakPassword exception)
+            {
+                if(vbox.getChildren().get(2) instanceof Label)
+                    vbox.getChildren().remove(2);
+                if(vbox.getChildren().get(4) instanceof Label)
+                    vbox.getChildren().remove(4);
+                Label error=makeLabel(exception.getMessage());
+                vbox.getChildren().add(4,error);
+            }
+            catch (UserNameExists exception)
+            {
+                if(vbox.getChildren().get(2) instanceof Label)
+                    vbox.getChildren().remove(2);
+                if(vbox.getChildren().get(4) instanceof Label)
+                    vbox.getChildren().remove(4);
+                if(vbox.getChildren().get(5) instanceof Label)
+                    vbox.getChildren().remove(5);
+                Label error=makeLabel(exception.getMessage());
+                vbox.getChildren().add(5,error);
+            }
+            catch (Exception exception){
+                if(vbox.getChildren().get(2) instanceof Label)
+                    vbox.getChildren().remove(2);
+                if(vbox.getChildren().get(4) instanceof Label)
+                    vbox.getChildren().remove(4);
+                if(vbox.getChildren().get(5) instanceof Label)
+                    vbox.getChildren().remove(5);
+                if(vbox.getChildren().get(6) instanceof Label)
+                    vbox.getChildren().remove(6);
+                Label error=makeLabel(exception.getMessage());
+                vbox.getChildren().add(6,error);
+            }
         }
     }
 
@@ -127,5 +139,17 @@ public class SignupPageController{
     void openLoginPage(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
         Controller.getController().getRoot().getChildren().removeLast();
+    }
+
+    @FXML
+    void changeColor(KeyEvent event) {
+        if(((TextField)event.getSource()).getPromptText().compareTo("Email")==0)
+            emailEntered=true;
+        else if(((TextField)event.getSource()).getPromptText().compareTo("Full name")==0)
+            fullNameEntered=true;
+        else if(((TextField)event.getSource()).getPromptText().compareTo("Username")==0)
+            usernameEntered=true;
+        if(passwordEntered && emailEntered && fullNameEntered && usernameEntered)
+            nextLabel.setTextFill(Paint.valueOf("white"));
     }
 }
