@@ -65,6 +65,9 @@
                 <RowConstraints maxHeight="239.20001220703125" minHeight="194.4000244140625" prefHeight="200.800048828125" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="245.5999755859375" minHeight="200.79998779296875" prefHeight="239.199951171875" vgrow="SOMETIMES" />
               </rowConstraints>
+               <children>
+                  <ImageView fx:id="img_plus" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#newPost" pickOnBounds="true" preserveRatio="true" />
+               </children>
             </GridPane>
          </content>
       </ScrollPane>

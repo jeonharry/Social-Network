@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+
+
+<ImageView fx:id="img_post" fitHeight="220.0" fitWidth="220.0" onMouseClicked="#openPost" pickOnBounds="true" preserveRatio="true" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ImagePostController" />
