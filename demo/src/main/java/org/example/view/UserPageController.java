@@ -76,8 +76,6 @@ public class UserPageController implements Initializable {
         lbl_connectionsNumber.setText(String.valueOf(Database.getDatabase().getConnections().values(UserController.getUserController().getUser().getUsername()).size()));
         ImagePattern profile = new ImagePattern(new Image(UserController.getUserController().getUser().getProfile()));
         crl_profile.setFill(profile);
-        img_plus.setImage(new Image(Objects.requireNonNull(Main.class.getResource("icons-plus.png")).toExternalForm()));
-        //grid_posts.getChildren().remove(0,0);
         int counter = 0;
         for(Post post : UserController.getUserController().getUser().getPosts()){
             ImagePostController.setRecently(post);
@@ -87,6 +85,5 @@ public class UserPageController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
-        //grid_posts.add(img_plus,counter%3, counter/3);
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -16,9 +17,10 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane fx:id="root" prefHeight="650.0" prefWidth="750.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.UserPageController">
    <children>
-      <Label fx:id="lbl_username" layoutX="37.0" layoutY="12.0" prefHeight="42.0" prefWidth="112.0" text="user name" textFill="WHITE">
+      <Label fx:id="lbl_username" layoutX="53.0" layoutY="10.0" prefHeight="42.0" prefWidth="467.0" text="user name" textFill="WHITE">
          <font>
             <Font name="Corbel Bold" size="24.0" />
          </font>
@@ -66,29 +68,9 @@
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></ImageView>
-      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="37.0" layoutY="332.0" minViewportHeight="220.0" minViewportWidth="660.0" prefHeight="303.0" prefViewportHeight="220.0" prefViewportWidth="660.0" prefWidth="710.0" style="-fx-background-color: black;" stylesheets="@StyleScrollBar.css">
-         <content>
-            <GridPane fx:id="grid_posts" alignment="TOP_CENTER" maxHeight="440.0" maxWidth="693.0" prefHeight="396.0" prefWidth="693.0" style="-fx-background-color: black;">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="220.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="220.0" prefWidth="220.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="220.0" prefWidth="220.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="239.20001220703125" minHeight="194.4000244140625" prefHeight="200.800048828125" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="245.5999755859375" minHeight="200.79998779296875" prefHeight="239.199951171875" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <ImageView fx:id="img_plus" fitHeight="80.0" fitWidth="101.0" onMouseClicked="#newPost" pickOnBounds="true" preserveRatio="true" />
-               </children>
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </GridPane>
-         </content>
-      </ScrollPane>
-      <Line endX="405.20001220703125" layoutX="314.0" layoutY="324.0" startX="-286.79998779296875" strokeWidth="0.4">
+         </cursor>
+      </ImageView>
+      <Line endX="405.20001220703125" layoutX="314.0" layoutY="323.0" startX="-286.79998779296875" strokeWidth="0.4">
          <stroke>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -121,5 +103,67 @@
             </LinearGradient>
          </stroke>
       </Line>
+      <ImageView fx:id="img_plus" fitHeight="30.0" fitWidth="30.0" layoutX="358.0" layoutY="606.0" onMouseClicked="#newPost" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <image>
+            <Image url="@Clipped_image_20250121_130451.png" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <Line endX="405.20001220703125" layoutX="314.0" layoutY="595.0" startX="-286.79998779296875" strokeWidth="0.4">
+         <stroke>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.2823529541492462" green="0.2823529541492462" blue="0.2823529541492462" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4814003873551521">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4829268292682925">
+                     <color>
+                        <Color red="0.8631578683853149" green="0.8631578683853149" blue="0.8631578683853149" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.4829268292682925">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2823529541492462" green="0.2823529541492462" blue="0.2823529541492462" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Line>
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="61.0" layoutY="333.0" minViewportHeight="220.0" minViewportWidth="660.0" prefHeight="254.0" prefViewportHeight="220.0" prefViewportWidth="660.0" prefWidth="710.0" style="-fx-background-color: black;" stylesheets="@StyleScrollBar.css">
+         <content>
+            <GridPane fx:id="grid_posts" alignment="TOP_CENTER" maxHeight="440.0" maxWidth="693.0" prefHeight="396.0" prefWidth="693.0" style="-fx-background-color: black;">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="220.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="220.0" prefWidth="220.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="220.0" prefWidth="220.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="239.20001220703125" minHeight="194.4000244140625" prefHeight="200.800048828125" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="245.5999755859375" minHeight="200.79998779296875" prefHeight="239.199951171875" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </GridPane>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
