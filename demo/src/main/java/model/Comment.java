@@ -2,9 +2,9 @@ package model;
 
 public class Comment {
     private final String message;
-    private final String sender;
+    private final User sender;
 
-    public Comment(String message, String sender) {
+    public Comment(String message, User sender) {
         this.message = message;
         this.sender = sender;
     }
@@ -13,7 +13,7 @@ public class Comment {
         return message;
     }
 
-    public String getSender() {
+    public User getSender() {
         return sender;
     }
 }
