@@ -32,4 +32,15 @@ public class Graph {
         if(value!=null)
             graph.get(key).add(value);
      }
+
+     public void remove(String key){
+        for(String v : graph.get(key)){
+            graph.get(v).remove(key);
+        }
+        graph.remove(key);
+     }
+     public void remove(String u, String v){
+        values(u).remove(v);
+        values(v).remove(u);
+     }
 }
