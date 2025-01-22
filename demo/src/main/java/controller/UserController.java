@@ -1,5 +1,6 @@
 package controller;
 
+import model.Post;
 import model.User;
 import model.database.Database;
 import model.exceptions.*;
@@ -94,5 +95,9 @@ public class UserController {
         user.setProfile(profile);
         user.setBio(bio);
         user.setFullName(fullName);
+    }
+
+    public void createNewPost(String image, String caption){
+        getUser().getPosts().add(new Post(image,caption,user));
     }
 }
