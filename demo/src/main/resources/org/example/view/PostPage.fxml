@@ -21,7 +21,7 @@
                   <Font name="Calibri Bold" size="17.0" />
                </font>
             </Label>
-            <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#openMoreOptions" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+            <ImageView fx:id="menu_img" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#openMoreOptions" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

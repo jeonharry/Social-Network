@@ -111,6 +111,8 @@ public class UserPageController implements Initializable {
             }
         }
         moreOptions.setVisible(false);
+        if(user.getUsername().compareTo(UserController.getUserController().getUser().getUsername())!=0)
+            img_menu.setVisible(false);
     }
 
     public static User getUser() {

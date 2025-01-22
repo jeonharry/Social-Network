@@ -55,6 +55,9 @@ public class PostPageController implements Initializable {
     private VBox moreOptions;
 
     @FXML
+    private ImageView menu_img;
+
+    @FXML
     void back(MouseEvent event) throws IOException {
         back();
     }
@@ -94,6 +97,8 @@ public class PostPageController implements Initializable {
         img_post.setImage(new Image(openedPost.getImage()));
         if(openedPost.getLikes().contains(UserController.getUserController().getUser().getUsername()))
             like_img.setImage(new Image(Main.class.getResource("pics/Clipped_image_20250121_165246.png").toExternalForm()));
+        if(username_lbl.getText().compareTo(UserController.getUserController().getUser().getUsername())!=0)
+            menu_img.setVisible(false);
     }
 
     public static Post getOpenedPost() {
