@@ -65,8 +65,9 @@ public class UserPageController implements Initializable {
     private VBox moreOptions;
 
     @FXML
-    void newPost(MouseEvent event) {
-
+    void newPost(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("NewPost.fxml"));
+        Controller.getController().getRoot().getChildren().addLast(loader.load());
     }
 
     @FXML

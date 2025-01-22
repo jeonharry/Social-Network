@@ -27,7 +27,7 @@
                         <Insets top="25.0" />
                      </VBox.margin>
                   </Circle>
-                  <Label onMouseClicked="#editProfile" text="Edit picture" textFill="#dfdfdf">
+                  <Label onMouseClicked="#editProfile" text="Edit picture" textFill="#00aeff">
                      <VBox.margin>
                         <Insets bottom="20.0" />
                      </VBox.margin>
@@ -121,12 +121,10 @@
          </children>
       </VBox>
       <ImageView fx:id="back_img" fitHeight="18.0" fitWidth="22.0" layoutX="24.0" layoutY="24.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@pics/Clipped_image_20250121_160218.png" />
-         </image>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <Image url="@pics/Clipped_image_20250121_160218.png" />
       </ImageView>
    </children>
 </AnchorPane>
