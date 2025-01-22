@@ -47,7 +47,7 @@
                         <Insets left="25.0" />
                      </VBox.margin>
                   </HBox>
-                  <TextField fx:id="txt_fullName" onKeyPressed="#changeColor" prefHeight="40.0" prefWidth="238.0" promptText="Full name" style="-fx-border-radius: 5;" stylesheets="@StyleTextField2.css">
+                  <TextField fx:id="txt_fullName" prefHeight="40.0" prefWidth="238.0" promptText="Full name" style="-fx-border-radius: 5;" stylesheets="@StyleTextField2.css">
                      <VBox.margin>
                         <Insets bottom="15.0" left="25.0" right="25.0" />
                      </VBox.margin>
@@ -64,7 +64,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="txt_username" onKeyPressed="#changeColor" prefHeight="40.0" prefWidth="238.0" promptText="Username" style="-fx-border-radius: 5;" stylesheets="@StyleTextField2.css">
+                  <TextField fx:id="txt_username" prefHeight="40.0" prefWidth="238.0" promptText="Username" style="-fx-border-radius: 5;" stylesheets="@StyleTextField2.css">
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>

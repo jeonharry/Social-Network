@@ -35,9 +35,6 @@ public class EditUserPageController implements Initializable {
     private Circle crl_profile;
 
     @FXML
-    private Label lbl_save;
-
-    @FXML
     private TextArea txt_bio;
 
     @FXML
@@ -58,16 +55,12 @@ public class EditUserPageController implements Initializable {
     }
 
     @FXML
-    void changeColor(KeyEvent event) {
-
-    }
-
-    @FXML
     void editProfile(MouseEvent event) {
         Stage stage = new Stage();
         FileChooser fileChooser = new FileChooser();
         file = fileChooser.showOpenDialog(stage);
-        crl_profile.setFill(new ImagePattern(new Image(file.toURI().toString())));
+        if(file != null)
+            crl_profile.setFill(new ImagePattern(new Image(file.toURI().toString())));
     }
 
     @FXML
