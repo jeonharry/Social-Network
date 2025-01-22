@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import model.OpenedPage;
 import model.Post;
@@ -14,6 +15,7 @@ public class Controller
     private Stack <User> usersProfiles;
     private Stack <Post> openedPosts;
     private Stack <OpenedPage> openedPages;
+    private Label commentsCount;
     private Controller(){
         usersProfiles=new Stack<>();
         openedPosts=new Stack<>();
@@ -54,5 +56,11 @@ public class Controller
     }
     public void setOpenedPages(Stack<OpenedPage> openedPages) {
         this.openedPages = openedPages;
+    }
+    public Label getCommentsCount() {
+        return commentsCount;
+    }
+    public void setCommentsCount(Label commentsCount) {
+        this.commentsCount = commentsCount;
     }
 }

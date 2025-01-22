@@ -76,7 +76,7 @@ public class SignupPageController{
 
 
     @FXML
-    void next(MouseEvent event) {
+    void next(MouseEvent event) throws IOException {
         if(passwordEntered && emailEntered && usernameEntered && fullNameEntered)
         {
             try
@@ -118,10 +118,11 @@ public class SignupPageController{
                     vbox.getChildren().remove(4);
                 if(vbox.getChildren().get(5) instanceof Label)
                     vbox.getChildren().remove(5);
-                if(vbox.getChildren().get(6) instanceof Label)
+                if(vbox.getChildren().size()>=7 && vbox.getChildren().get(6) instanceof Label)
                     vbox.getChildren().remove(6);
                 Label error=makeLabel(exception.getMessage());
                 vbox.getChildren().add(6,error);
+                throw exception;
             }
         }
     }

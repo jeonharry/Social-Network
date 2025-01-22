@@ -24,20 +24,29 @@
             <Image url="@pics/Clipped_image_20250121_160218.png" />
          </image>
       </ImageView>
-      <VBox fx:id="vbox" alignment="TOP_CENTER" layoutX="173.0" layoutY="71.0" prefHeight="508.0" prefWidth="354.0" style="-fx-border-color: #919191; -fx-background-color: black; -fx-border-width: 0.6;">
+      <VBox fx:id="vbox" alignment="TOP_CENTER" layoutX="173.0" layoutY="59.0" prefHeight="540.0" prefWidth="354.0" spacing="5.0" style="-fx-border-color: #919191; -fx-background-color: black; -fx-border-width: 0.6;">
          <children>
-            <ImageView fx:id="img_post" fitHeight="260.0" fitWidth="245.0" opacity="0.93" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img_post" fitHeight="235.0" fitWidth="243.0" onMouseClicked="#selectPhoto" opacity="0.93" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@pics/no_image.png" />
                </image>
                <VBox.margin>
                   <Insets top="25.0" />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <Label onMouseClicked="#selectPhoto" text="Select  photo" textFill="#00aeff">
                <VBox.margin>
-                  <Insets />
+                  <Insets top="3.0" />
                </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Label>
             <HBox prefHeight="17.0" prefWidth="308.0">
                <children>
@@ -46,7 +55,7 @@
                         <Font name="System Bold" size="11.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="5.0" top="15.0" />
+                        <Insets left="5.0" top="10.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -54,7 +63,7 @@
                   <Insets left="25.0" />
                </VBox.margin>
             </HBox>
-            <TextArea fx:id="txt_caption" prefHeight="95.0" prefWidth="259.0" promptText="Caption" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 5; -fx-border-width: 0.5;">
+            <TextArea fx:id="txt_caption" onKeyPressed="#typed" prefHeight="95.0" prefWidth="259.0" promptText="Caption" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 5; -fx-border-width: 0.5;">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
@@ -70,7 +79,7 @@
                         <Insets top="20.0" />
                      </StackPane.margin>
                   </Rectangle>
-                  <Label text="post" textFill="#c1c1c1">
+                  <Label fx:id="post_lbl" text="post" textFill="#c1c1c1">
                      <font>
                         <Font name="System Bold" size="13.5" />
                      </font>

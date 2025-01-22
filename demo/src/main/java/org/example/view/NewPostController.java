@@ -6,11 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -33,6 +36,9 @@ public class NewPostController implements Initializable {
     private File file;
 
     @FXML
+    private Label post_lbl;
+
+    @FXML
     void back(MouseEvent event) throws IOException {
         back();
     }
@@ -51,7 +57,11 @@ public class NewPostController implements Initializable {
         FileChooser fileChooser = new FileChooser();
         file = fileChooser.showOpenDialog(stage);
         if(file != null)
+        {
             img_post.setImage(new Image(file.toURI().toString()));
+            if(txt_caption.getText().compareTo("")!=0)
+                post_lbl.setTextFill(Color.WHITE);
+        }
     }
 
     @Override
@@ -65,5 +75,11 @@ public class NewPostController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
         Controller.getController().getRoot().getChildren().clear();
         Main.getStage().setScene(new Scene(fxmlLoader.load()));
+    }
+
+    @FXML
+    void typed(KeyEvent event) {
+        if(file!=null)
+            post_lbl.setTextFill(Color.WHITE);
     }
 }

@@ -88,6 +88,7 @@ public class PostPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Controller.getController().setRoot(root);
+        Controller.getController().setCommentsCount(lbl_commentNumber);
         username_lbl.setText(openedPost.getOwner().getUsername());
         lbl_caption.setText(openedPost.getCaption());
         lbl_likeNumber.setText(String.valueOf(openedPost.getLikes().size()));

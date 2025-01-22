@@ -36,6 +36,7 @@ public class CommentsPageController implements Initializable {
     @FXML
     void back(MouseEvent event) {
         event.consume();
+        Controller.getController().getCommentsCount().setText(String.valueOf(PostPageController.getOpenedPost().getComments().size()));
         Controller.getController().getRoot().getChildren().removeLast();
     }
 
