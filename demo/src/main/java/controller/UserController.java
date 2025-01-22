@@ -79,7 +79,6 @@ public class UserController {
     }
     public void delete()
     {
-        Database.getDatabase().getUsers().remove(user.getUsername());
-        Database.getDatabase().getConnections().remove(user.getUsername());
+        Database.getDatabase().deleteUSer(user);
     }
 }

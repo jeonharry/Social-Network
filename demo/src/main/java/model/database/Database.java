@@ -2,6 +2,7 @@ package model.database;
 
 import model.User;
 import model.graph.Graph;
+import org.example.view.Main;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +14,7 @@ public class Database {
     private Database() {
         this.users = new HashMap<>();
         connections=new Graph();
+        add( "Deleted Account",new User("Deleted Account",null,null,null, Main.class.getResource("pics/images(5).png").toExternalForm()));
     }
 
     public static Database getDatabase() {
@@ -49,5 +51,11 @@ public class Database {
     {
         users.put(username,user);
         connections.insert(username);
+    }
+
+    public void deleteUSer(User user){
+        getUsers().remove(user.getUsername());
+        getConnections().remove(user.getUsername());
+        users.values().forEach(account -> account.getPosts().forEach(post -> post.getComments().stream().filter(comment -> comment.getSender().equals(user)).forEach(comment -> comment.setSender(users.get("Deleted Account")))));
     }
 }
