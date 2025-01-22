@@ -65,7 +65,7 @@
       </Label>
       <VBox fx:id="moreOptions" alignment="TOP_CENTER" layoutX="535.0" layoutY="36.0" prefHeight="142.0" prefWidth="125.0" spacing="10.0" style="-fx-background-color: #2e2e2ef2; -fx-background-radius: 10;" visible="false">
          <children>
-            <Label onMouseClicked="#editProfile" text="Edit Profile" textFill="WHITE">
+            <Label fx:id="edit_lbl" onMouseClicked="#editProfile" onMouseEntered="#labelChangeColorEnter" onMouseExited="#labelChangeColorExit" text="Edit Profile" textFill="#c4c4c4">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -76,7 +76,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label onMouseClicked="#deleteAccount" text="Delete Account" textFill="#d13c3c">
+            <Label fx:id="delete_lbl" onMouseClicked="#deleteAccount" onMouseEntered="#labelChangeColorEnter" onMouseExited="#labelChangeColorExit" text="Delete Account" textFill="#b73b3b">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -84,7 +84,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label onMouseClicked="#logout" text="Log out" textFill="#d13c3c">
+            <Label fx:id="logout_lbl" onMouseClicked="#logout" onMouseEntered="#labelChangeColorEnter" onMouseExited="#labelChangeColorExit" text="Logout" textFill="#b73b3b">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

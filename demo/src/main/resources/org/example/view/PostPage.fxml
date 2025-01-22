@@ -91,9 +91,9 @@
          </cursor></ImageView>
       <VBox fx:id="moreOptions" alignment="TOP_CENTER" layoutX="345.0" layoutY="78.0" prefHeight="96.0" prefWidth="94.0" spacing="15.0" style="-fx-background-color: #303030e5; -fx-background-radius: 7; -fx-border-radius: 7; -fx-border-color: #484848; -fx-border-width: 0.4;" visible="false">
          <children>
-            <ImageView fitHeight="30.0" fitWidth="50.0" onMouseClicked="#editPost" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="edit_img" fitHeight="30.0" fitWidth="50.0" onMouseClicked="#editPost" onMouseEntered="#editChangeColorEnter" onMouseExited="#editChangeColorExit" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@pics/Clipped_image_20250121_230343.png" />
+                  <Image url="@pics/Clipped_image_611621_230343.png" />
                </image>
                <VBox.margin>
                   <Insets right="10.0" top="20.0" />
@@ -102,9 +102,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fitHeight="29.0" fitWidth="66.0" onMouseClicked="#deletePost" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="delete_img" fitHeight="29.0" fitWidth="66.0" onMouseClicked="#deletePost" onMouseEntered="#deleteChangeColorEnter" onMouseExited="#deleteChangeColorExit" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@pics/Clipped_image_20250121_230314.png" />
+                  <Image url="@pics/Clipped_image_21_230314.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

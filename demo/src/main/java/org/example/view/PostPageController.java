@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -56,6 +57,12 @@ public class PostPageController implements Initializable {
 
     @FXML
     private ImageView menu_img;
+
+    @FXML
+    private ImageView delete_img;
+
+    @FXML
+    private ImageView edit_img;
 
     @FXML
     void back(MouseEvent event) throws IOException {
@@ -133,5 +140,25 @@ public class PostPageController implements Initializable {
         Controller.getController().getOpenedPosts().pop();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
         Main.getStage().setScene(new Scene(fxmlLoader.load(),700,650));
+    }
+
+    @FXML
+    void deleteChangeColorEnter(MouseEvent event) {
+        delete_img.setImage(new Image(Main.class.getResource("pics/Clipped_image_20250121_230314.png").toExternalForm()));
+    }
+
+    @FXML
+    void deleteChangeColorExit(MouseEvent event) {
+        delete_img.setImage(new Image(Main.class.getResource("pics/Clipped_image_21_230314.png").toExternalForm()));
+    }
+
+    @FXML
+    void editChangeColorEnter(MouseEvent event) {
+        edit_img.setImage(new Image(Main.class.getResource("pics/Clipped_image_20250121_230343.png").toExternalForm()));
+    }
+
+    @FXML
+    void editChangeColorExit(MouseEvent event) {
+        edit_img.setImage(new Image(Main.class.getResource("pics/Clipped_image_611621_230343.png").toExternalForm()));
     }
 }

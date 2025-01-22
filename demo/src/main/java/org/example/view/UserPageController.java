@@ -13,7 +13,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import model.OpenedPage;
 import model.Post;
@@ -64,6 +66,15 @@ public class UserPageController implements Initializable {
 
     @FXML
     private VBox moreOptions;
+
+    @FXML
+    private Label delete_lbl;
+
+    @FXML
+    private Label edit_lbl;
+
+    @FXML
+    private Label logout_lbl;
 
     @FXML
     void newPost(MouseEvent event) throws IOException {
@@ -166,5 +177,25 @@ public class UserPageController implements Initializable {
     void deleteAccount(MouseEvent event) throws IOException {
         UserController.getUserController().delete();
         logout();
+    }
+
+    @FXML
+    void labelChangeColorEnter(MouseEvent event) {
+        if(((Label)event.getTarget()).getText().compareTo("Edit Profile")==0)
+            edit_lbl.setTextFill(Color.WHITE);
+        else if(((Label)event.getTarget()).getText().compareTo("Delete Account")==0)
+            delete_lbl.setTextFill(Paint.valueOf("#e70b0b"));
+        else
+            logout_lbl.setTextFill(Paint.valueOf("#e70b0b"));
+    }
+
+    @FXML
+    void labelChangeColorExit(MouseEvent event) {
+        if(((Label)event.getTarget()).getText().compareTo("Edit Profile")==0)
+            edit_lbl.setTextFill(Paint.valueOf("#c4c4c4"));
+        else if(((Label)event.getTarget()).getText().compareTo("Delete Account")==0)
+            delete_lbl.setTextFill(Paint.valueOf("#b73b3b"));
+        else
+            logout_lbl.setTextFill(Paint.valueOf("#b73b3b"));
     }
 }

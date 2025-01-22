@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -49,15 +50,23 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MenuButton>
-                        <MenuButton fx:id="date" layoutX="342.0" layoutY="235.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="45.0" stylesheets="@StyleMenuButton.css" text="1">
+                        <MenuButton fx:id="date" layoutX="342.0" layoutY="235.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="45.0" text="1">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <stylesheets>
+                              <URL value="@StyleMenuButton.css" />
+                              <URL value="@StyleMenuButton2.css" />
+                           </stylesheets>
                         </MenuButton>
-                        <MenuButton fx:id="year" layoutX="400.0" layoutY="235.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="60.0" stylesheets="@StyleMenuButton.css" text="2025">
+                        <MenuButton fx:id="year" layoutX="400.0" layoutY="235.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="60.0" text="2025">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <stylesheets>
+                              <URL value="@StyleMenuButton.css" />
+                              <URL value="@StyleMenuButton2.css" />
+                           </stylesheets>
                         </MenuButton>
                      </children>
                   </HBox>
