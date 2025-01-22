@@ -122,8 +122,10 @@ public class PostPageController implements Initializable {
     }
 
     @FXML
-    void editPost(MouseEvent event) {
-
+    void editPost(MouseEvent event) throws IOException {
+        EditPostController.setPost(openedPost);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("EditPost.fxml"));
+        Main.getStage().setScene(new Scene(fxmlLoader.load(),700,650));
     }
 
     private void back() throws IOException {
