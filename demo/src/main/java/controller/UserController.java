@@ -81,4 +81,18 @@ public class UserController {
     {
         Database.getDatabase().deleteUSer(user);
     }
+    public void editUser(String username, String fullName, String bio, String profile) throws UserNameExists {
+        if(Database.getDatabase().exist(username))
+            throw new UserNameExists();
+
+        User newUser = new User(username,fullName,user.getPassword(),user.getEmail(),user.getBirthdate(),bio,profile);
+        newUser.setPosts(user.getPosts());
+        Database.getDatabase().editUser(user,newUser);
+        setUser(newUser);
+    }
+    public void editUser(String fullName, String bio, String profile){
+        user.setProfile(profile);
+        user.setBio(bio);
+        user.setFullName(fullName);
+    }
 }

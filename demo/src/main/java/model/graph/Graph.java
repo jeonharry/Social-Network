@@ -43,4 +43,13 @@ public class Graph {
         values(u).remove(v);
         values(v).remove(u);
      }
+
+     public void edite(String key, String newKey){
+         for(String v : graph.get(key)){
+             graph.get(v).remove(key);
+             graph.get(v).add(newKey);
+         }
+         graph.put(newKey,graph.get(key));
+         graph.remove(key);
+     }
 }

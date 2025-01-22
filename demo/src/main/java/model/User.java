@@ -12,21 +12,20 @@ public class User {
     private Calendar birthdate;
     private String bio;
     private String profile;
-    private final ArrayList<Post> posts;
+    private ArrayList<Post> posts;
 
-    public User(String username, String fullName,String password, String email, Date birthdate, String bio, String profile) {
+    public User(String username, String fullName,String password, String email, Calendar birthdate, String bio, String profile) {
         this.username = username;
         this.fullName = fullName;
         this.password = password;
         this.email = email;
-        this.birthdate =Calendar.getInstance();
-        this.birthdate.setTime(birthdate);
+        this.birthdate = birthdate;
         this.bio = bio;
         this.profile = profile;
         this.posts = new ArrayList<>();
     }
     public User(String username, String fullName,String password, String email,String profile) {
-        this(username,fullName,password,email,new Date(),"",profile);
+        this(username,fullName,password,email,null,"",profile);
     }
 
     public String getUsername() {
@@ -74,5 +73,9 @@ public class User {
     }
     public ArrayList<Post> getPosts() {
         return posts;
+    }
+
+    public void setPosts(ArrayList<Post> posts) {
+        this.posts = posts;
     }
 }

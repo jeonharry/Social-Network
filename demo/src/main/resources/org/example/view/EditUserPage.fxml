@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.EditUserPageController">
+   <children>
+      <VBox layoutX="195.0" layoutY="98.0" prefHeight="454.0" prefWidth="310.0" spacing="10.0" style="-fx-background-color: black;">
+         <children>
+            <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="450.0" prefWidth="300.0" style="-fx-border-color: #919191; -fx-background-color: black; -fx-border-width: 0.6;">
+               <children>
+                  <Circle fx:id="crl_profile" fill="DODGERBLUE" radius="45.0" stroke="BLACK" strokeType="INSIDE">
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                  </Circle>
+                  <Label onMouseClicked="#editProfile" text="Edit picture" textFill="#dfdfdf">
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="9.0" prefWidth="283.0">
+                     <children>
+                        <Label text="Full name" textFill="#dfdfdf">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <TextField fx:id="txt_fullName" onKeyPressed="#changeColor" prefHeight="40.0" prefWidth="238.0" promptText="Full name" style="-fx-border-radius: 5;" stylesheets="@StyleTextField2.css">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="25.0" right="25.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox prefHeight="17.0" prefWidth="308.0">
+                     <children>
+                        <Label text="Username" textFill="#dfdfdf">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <TextField fx:id="txt_username" onKeyPressed="#changeColor" prefHeight="40.0" prefWidth="238.0" promptText="Username" style="-fx-border-radius: 5;" stylesheets="@StyleTextField2.css">
+                     <VBox.margin>
+                        <Insets left="25.0" right="25.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox prefHeight="17.0" prefWidth="308.0">
+                     <children>
+                        <Label text="Bio" textFill="#dfdfdf">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <TextArea fx:id="txt_bio" prefHeight="45.0" prefWidth="293.0" promptText="Bio" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 5; -fx-border-width: 0.5;">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="25.0" right="25.0" />
+                     </VBox.margin>
+                     <stylesheets>
+                        <URL value="@StyleTextField2.css" />
+                        <URL value="@StyleScrollBar.css" />
+                     </stylesheets>
+                  </TextArea>
+                  <StackPane onMouseClicked="#save" prefHeight="35.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#3185d4" height="35.0" stroke="BLACK" strokeType="INSIDE" width="258.0">
+                           <StackPane.margin>
+                              <Insets />
+                           </StackPane.margin>
+                        </Rectangle>
+                        <Label fx:id="lbl_save" text="Save" textFill="#c1c1c1">
+                           <font>
+                              <Font name="System Bold" size="13.5" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="25.0" right="25.0" top="5.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </StackPane>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+      <ImageView fx:id="back_img" fitHeight="18.0" fitWidth="22.0" layoutX="24.0" layoutY="24.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pics/Clipped_image_20250121_160218.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

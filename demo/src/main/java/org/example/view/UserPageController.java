@@ -124,8 +124,10 @@ public class UserPageController implements Initializable {
     }
 
     @FXML
-    void editProfile(MouseEvent event) {
-
+    void editProfile(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("EditUserPage.fxml"));
+        Controller.getController().getRoot().getChildren().clear();
+        Controller.getController().getRoot().getChildren().add(fxmlLoader.load());
     }
 
     @FXML

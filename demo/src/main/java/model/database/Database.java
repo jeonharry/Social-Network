@@ -1,5 +1,6 @@
 package model.database;
 
+import controller.UserController;
 import model.User;
 import model.graph.Graph;
 import org.example.view.Main;
@@ -57,5 +58,12 @@ public class Database {
         getUsers().remove(user.getUsername());
         getConnections().remove(user.getUsername());
         users.values().forEach(account -> account.getPosts().forEach(post -> post.getComments().stream().filter(comment -> comment.getSender().equals(user)).forEach(comment -> comment.setSender(users.get("Deleted Account")))));
+    }
+
+    public void editUser(User user, User newUser){
+        getUsers().remove(user.getUsername());
+        getUsers().put(newUser.getUsername(),newUser);
+        users.values().forEach(account -> account.getPosts().forEach(post -> post.getComments().stream().filter(comment -> comment.getSender().equals(user)).forEach(comment -> comment.setSender(newUser))));
+        getConnections().edite(user.getUsername(),newUser.getUsername());
     }
 }
