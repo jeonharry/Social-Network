@@ -5,6 +5,7 @@ import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -45,6 +47,9 @@ public class EditUserPageController implements Initializable {
 
     @FXML
     private VBox vbox;
+
+    @FXML
+    private Label lbl_save;
 
     private File file;
     private User user;
@@ -94,6 +99,7 @@ public class EditUserPageController implements Initializable {
         error.setFont(Font.font("System", FontWeight.BOLD,11));
         error.setTextFill(Paint.valueOf("#e41e1e"));
         error.setPrefWidth(238);
+        error.setAlignment(Pos.CENTER_LEFT);
         return error;
     }
 
@@ -112,5 +118,10 @@ public class EditUserPageController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
         Controller.getController().getRoot().getChildren().clear();
         Main.getStage().setScene(new Scene(fxmlLoader.load()));
+    }
+
+    @FXML
+    void edited(KeyEvent event) {
+        lbl_save.setTextFill(Color.WHITE);
     }
 }
