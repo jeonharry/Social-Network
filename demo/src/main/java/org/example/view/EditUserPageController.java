@@ -12,6 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
@@ -49,9 +50,6 @@ public class EditUserPageController implements Initializable {
 
     @FXML
     private VBox vbox;
-
-    @FXML
-    private Label lbl_save;
 
     private File file;
     private User user;

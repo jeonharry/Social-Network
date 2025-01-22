@@ -10,7 +10,7 @@ import model.User;
 import model.database.Database;
 
 import java.io.IOException;
-import java.util.Date;
+
 
 public class Main extends Application {
     private static Stage stage;
@@ -27,13 +27,18 @@ public class Main extends Application {
     public static void main(String[] args) {
         User user1=new User("jeonharry","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
         User user2=new User("mina","Mina","1234","mina666@gmail.com",null,"CE major",Main.class.getResource("pics/images(1).jpg").toExternalForm());
+        User user3=new User("bale","bala","1234","baba666@gmail.com",null,"NO major",Main.class.getResource("pics/images(1).jpg").toExternalForm());
         Post post1=new Post(Main.class.getResource("pics/image123.jpg").toExternalForm(),"This is dope guys!",user1);
         post1.getComments().add(new Comment("wow, thats cool",user1));
         post1.getComments().add(new Comment("wow!",user2));
+        post1.getComments().add(new Comment("Nah",user3));
         user1.getPosts().addLast(post1);
         Database.getDatabase().add("jeonharry",user1);
         Database.getDatabase().add("mina",user2);
+        Database.getDatabase().add("bale",user3);
         Database.getDatabase().getConnections().insert("jeonharry","mina");
+        Database.getDatabase().getConnections().insert("jeonharry","bale");
+        Database.getDatabase().getConnections().insert("mina","bale");
         launch();
     }
 

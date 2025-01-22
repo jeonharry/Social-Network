@@ -33,6 +33,7 @@ public class ImagePostController implements Initializable {
     void openPost(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("PostPage.fxml"));
         PostPageController.setOpenedPost(post);
+        Controller.getController().getOpenedPosts().push(post);
         Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
     }
 
@@ -40,6 +41,5 @@ public class ImagePostController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.post = recently;
         img_post.setImage(new Image(post.getImage()));
-        Controller.getController().getOpenedPosts().push(post);
     }
 }

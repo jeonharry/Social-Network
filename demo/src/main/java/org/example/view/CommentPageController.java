@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import model.Comment;
+import model.OpenedPage;
 import model.database.Database;
 
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class CommentPageController implements Initializable {
         {
             UserPageController.setUser(Database.getDatabase().getUser(username_lbl.getText()));
             Controller.getController().getUsersProfiles().push(Database.getDatabase().getUser(username_lbl.getText()));
+            Controller.getController().getOpenedPages().push(OpenedPage.THROUGH_COMMENTS);
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
             Main.getStage().setScene(new Scene(fxmlLoader.load(),700,650));
         }

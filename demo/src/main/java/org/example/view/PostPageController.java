@@ -127,8 +127,8 @@ public class PostPageController implements Initializable {
 
     private void back() throws IOException {
         UserPageController.setUser(Controller.getController().getUsersProfiles().peek());
+        Controller.getController().getOpenedPosts().pop();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
         Main.getStage().setScene(new Scene(fxmlLoader.load(),700,650));
-        Controller.getController().getOpenedPosts().pop();
     }
 }

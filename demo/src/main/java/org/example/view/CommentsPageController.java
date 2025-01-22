@@ -35,6 +35,7 @@ public class CommentsPageController implements Initializable {
 
     @FXML
     void back(MouseEvent event) {
+        event.consume();
         Controller.getController().getRoot().getChildren().removeLast();
     }
 

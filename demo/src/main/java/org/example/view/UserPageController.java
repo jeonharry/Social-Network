@@ -15,6 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import model.OpenedPage;
 import model.Post;
 import model.User;
 import model.database.Database;
@@ -71,8 +72,9 @@ public class UserPageController implements Initializable {
     }
 
     @FXML
-    void showConnections(MouseEvent event) {
-
+    void showConnections(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ConnectionsPage.fxml"));
+        Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
     }
 
     @FXML
@@ -82,13 +84,23 @@ public class UserPageController implements Initializable {
 
     @FXML
     void back(MouseEvent event) throws IOException {
+        OpenedPage op=Controller.getController().getOpenedPages().pop();
         Controller.getController().getUsersProfiles().pop();
-        PostPageController.setOpenedPost(Controller.getController().getOpenedPosts().peek());
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("PostPage.fxml"));
-        Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
-        CommentsPageController.setPost(PostPageController.getOpenedPost());
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("CommentsPage.fxml"));
-        Controller.getController().getRoot().getChildren().addLast(loader.load());
+        if(op==OpenedPage.THROUGH_COMMENTS)
+        {
+            PostPageController.setOpenedPost(Controller.getController().getOpenedPosts().peek());
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("PostPage.fxml"));
+            Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
+            CommentsPageController.setPost(PostPageController.getOpenedPost());
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("CommentsPage.fxml"));
+            Controller.getController().getRoot().getChildren().addLast(loader.load());
+        }
+        else
+        {
+            UserPageController.setUser(Controller.getController().getUsersProfiles().peek());
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
+            Main.getStage().setScene(new Scene(fxmlLoader.load(),700,650));
+        }
     }
 
     @Override
@@ -114,6 +126,13 @@ public class UserPageController implements Initializable {
         moreOptions.setVisible(false);
         if(user.getUsername().compareTo(UserController.getUserController().getUser().getUsername())!=0)
             img_menu.setVisible(false);
+        else
+        {
+            Controller.getController().getOpenedPages().clear();
+            Controller.getController().getOpenedPosts().clear();
+            Controller.getController().getUsersProfiles().clear();
+            Controller.getController().getUsersProfiles().push(UserController.getUserController().getUser());
+        }
     }
 
     public static User getUser() {
