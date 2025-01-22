@@ -49,12 +49,12 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MenuButton>
-                        <MenuButton fx:id="date" mnemonicParsing="false" prefHeight="33.0" prefWidth="45.0" stylesheets="@StyleMenuButton.css" text="1">
+                        <MenuButton fx:id="date" layoutX="342.0" layoutY="235.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="33.0" prefWidth="45.0" stylesheets="@StyleMenuButton.css" text="1">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MenuButton>
-                        <MenuButton fx:id="year" mnemonicParsing="false" prefHeight="33.0" prefWidth="60.0" stylesheets="@StyleMenuButton.css" text="2025">
+                        <MenuButton fx:id="year" layoutX="400.0" layoutY="235.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="60.0" stylesheets="@StyleMenuButton.css" text="2025">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
