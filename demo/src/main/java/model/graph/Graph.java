@@ -66,22 +66,24 @@ public class Graph {
                  }
              }
          }
-         PriorityQueue<Pair> pairs = new PriorityQueue<>(Collections.reverseOrder());
+         Comparator<Map.Entry<Double,String>> comparator = (p1, p2) -> Double.compare(p2.getKey(), p1.getKey());
+         PriorityQueue<Map.Entry<Double,String>> pairs = new PriorityQueue<>(comparator);
          for(Map.Entry<String,Integer> entry : mp.entrySet()){
              int num = graph.get(key).size()+graph.get(entry.getKey()).size() - 2 * entry.getValue();
              double chance = 1;
              if(num!=0){
                  chance = (double) entry.getValue() /num;
              }
-             pairs.add(new Pair(chance,entry.getKey()));
+             pairs.add(new AbstractMap.SimpleEntry<>(chance,entry.getKey()));
          }
          int cnt = 6;
          ArrayList<String> answer = new ArrayList<>();
          while (cnt>0 && !pairs.isEmpty()){
-             answer.add(pairs.poll().key());
+             answer.add(pairs.poll().getValue());
              cnt--;
          }
          return answer;
      }
-     record Pair(Double chance, String key){}
+
+
 }

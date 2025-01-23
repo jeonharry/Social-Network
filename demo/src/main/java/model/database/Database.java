@@ -77,7 +77,9 @@ public class Database {
         }
         int cnt = orderOfSignup.size()-1;
         while (answer.size() < 6 && cnt>=0){
-            answer.add(users.get(orderOfSignup.get(cnt)));
+            if(!answer.contains(users.get(orderOfSignup.get(cnt))) && !connections.values(username).contains(orderOfSignup.get(cnt)))
+                answer.add(users.get(orderOfSignup.get(cnt)));
+            cnt--;
         }
         return answer;
     }
