@@ -17,6 +17,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.OpenedPage;
 import model.Post;
 import model.User;
@@ -163,20 +165,37 @@ public class UserPageController implements Initializable {
 
     @FXML
     void logout(MouseEvent event) throws IOException {
-        logout();
+        showPage();
+        if(Controller.getController().isMakeSure())
+        {
+            UserController.getUserController().logout();
+            Controller.getController().getUsersProfiles().pop();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
+            Controller.getController().getRoot().getChildren().clear();
+            Controller.getController().getRoot().getChildren().add(fxmlLoader.load());
+        }
     }
 
-    public void logout() throws IOException {
-        UserController.getUserController().logout();
-        Controller.getController().getUsersProfiles().pop();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
-        Controller.getController().getRoot().getChildren().clear();
-        Controller.getController().getRoot().getChildren().add(fxmlLoader.load());
+    private void showPage() throws IOException {
+        Stage stage=new Stage();
+        Controller.getController().setMakeSureStage(stage);
+        stage.setScene(new Scene(new FXMLLoader(Main.class.getResource("MakeSure.fxml")).load(),300,200));
+        stage.initOwner(Main.getStage());
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.showAndWait();
     }
     @FXML
     void deleteAccount(MouseEvent event) throws IOException {
-        UserController.getUserController().delete();
-        logout();
+        showPage();
+        if(Controller.getController().isMakeSure())
+        {
+            UserController.getUserController().delete();
+            UserController.getUserController().logout();
+            Controller.getController().getUsersProfiles().pop();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
+            Controller.getController().getRoot().getChildren().clear();
+            Controller.getController().getRoot().getChildren().add(fxmlLoader.load());
+        }
     }
 
     @FXML

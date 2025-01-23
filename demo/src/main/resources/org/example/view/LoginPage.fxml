@@ -18,7 +18,7 @@
    <children>
       <VBox layoutX="195.0" layoutY="60.0" prefHeight="480.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: black;">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="390.0" prefWidth="300.0" spacing="10.0" style="-fx-border-color: #919191; -fx-background-color: black; -fx-border-width: 0.6;">
+            <VBox alignment="TOP_CENTER" prefHeight="390.0" prefWidth="300.0" spacing="10.0" style="-fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #FEDA75 0%, #FA7E1E 20%, #D62976 40%, #962FBF 60%, #4F5BD5 80%); -fx-background-color: black; -fx-border-width: 0.6;">
                <children>
                   <ImageView fitHeight="77.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -68,7 +68,7 @@
                   </Label>
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="280.0" style="-fx-background-color: black; -fx-border-color: #919191; -fx-border-width: 0.6;">
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="280.0" style="-fx-background-color: black; -fx-border-color: linear-gradient(from 100% 100% to 0% 0%, #FEDA75 0%, #FA7E1E 20%, #D62976 40%, #962FBF 60%, #4F5BD5 80%); -fx-border-width: 0.6;">
                <children>
                   <Label text="Don't have an account? " textFill="WHITE" />
                   <Label onMouseClicked="#openSignupPage" text="Sign up" textFill="#00aeff">

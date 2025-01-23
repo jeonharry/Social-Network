@@ -36,7 +36,7 @@ public class UserController {
         if(!Database.getDatabase().checkPassword(username,password))
             throw new WrongPassword();
         user=Database.getDatabase().getUser(username);
-        suggestions=Database.getDatabase().suggestions(username);
+        updateSuggestions();
     }
     public void logout()
     {
@@ -45,7 +45,7 @@ public class UserController {
     public void levelTwoSignup(String date) {
         user.setBirthdate(new Date(date));
         Database.getDatabase().add(user.getUsername(),user);
-        suggestions=Database.getDatabase().suggestions(user.getUsername());
+        updateSuggestions();
     }
     public int checkPassword(String password){
         int score = 0;
@@ -106,5 +106,9 @@ public class UserController {
 
     public ArrayList<User> getSuggestions() {
         return suggestions;
+    }
+    public void updateSuggestions()
+    {
+        suggestions=Database.getDatabase().suggestions(user.getUsername());
     }
 }
