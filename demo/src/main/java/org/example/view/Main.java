@@ -54,14 +54,11 @@ public class Main extends Application {
         Database.getDatabase().getConnections().insert("jeonharry","bale");
         Database.getDatabase().getConnections().insert("mina","bale");
         Database.getDatabase().getConnections().insert("dd","bale");
-        Database.getDatabase().getConnections().insert("ee","bale");
         Database.getDatabase().getConnections().insert("cc","bale");
         Database.getDatabase().getConnections().insert("aa","bale");
         Database.getDatabase().getConnections().insert("dd","bale");
         Database.getDatabase().getConnections().insert("ff","bale");
         Database.getDatabase().getConnections().insert("bb","bale");
-//        for(String user : Database.getDatabase().getConnections().values("bale"))
-//            System.out.println(user);
         launch();
     }
 

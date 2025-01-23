@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <HBox prefHeight="70.0" prefWidth="460.0" spacing="10.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.ProfileBoxController">
@@ -20,7 +21,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Circle>
-      <VBox onMouseClicked="#openProfile" prefHeight="52.0" prefWidth="310.0">
+      <VBox onMouseClicked="#openProfile" prefHeight="58.0" prefWidth="210.0">
          <HBox.margin>
             <Insets bottom="5.0" left="5.0" top="7.0" />
          </HBox.margin>
@@ -43,6 +44,22 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </VBox>
+      <StackPane fx:id="connect_btn" onMouseClicked="#connect" prefHeight="70.0" prefWidth="81.0" visible="false">
+         <children>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="DODGERBLUE" height="35.0" stroke="BLACK" strokeType="INSIDE" width="75.0" />
+            <Label text="Connect" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <StackPane.margin>
+                  <Insets bottom="2.0" />
+               </StackPane.margin>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </StackPane>
       <StackPane fx:id="unfollow_btn" onMouseClicked="#unfollow" prefHeight="70.0" prefWidth="21.0" style="-fx-background-radius: 10; -fx-border-radius: 10;">
          <children>
             <Line endX="62.19142532348633" endY="-22.982927322387695" rotate="45.0" startX="82.13573455810547" startY="-22.98287582397461" stroke="#d1d1d1d9" strokeLineCap="ROUND" strokeWidth="2.0" />

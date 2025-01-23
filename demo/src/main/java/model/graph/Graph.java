@@ -57,7 +57,7 @@ public class Graph {
          Map<String, Integer> mp = new HashMap<>();
          for(String connectionKey : graph.get(key)){
              for(String share : graph.get(connectionKey)){
-                 if(!graph.get(key).contains(share)){
+                 if(!graph.get(key).contains(share) && share.compareTo(key)!=0){
                      if(!mp.containsKey(share))
                          mp.put(share,1);
                      else

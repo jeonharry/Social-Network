@@ -6,6 +6,8 @@ import model.OpenedPage;
 import model.Post;
 import model.User;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 public class Controller
@@ -16,6 +18,7 @@ public class Controller
     private Stack <Post> openedPosts;
     private Stack <OpenedPage> openedPages;
     private Label commentsCount;
+    boolean isInConnections=true;
     private Controller(){
         usersProfiles=new Stack<>();
         openedPosts=new Stack<>();
@@ -62,5 +65,11 @@ public class Controller
     }
     public void setCommentsCount(Label commentsCount) {
         this.commentsCount = commentsCount;
+    }
+    public boolean isInConnections() {
+        return isInConnections;
+    }
+    public void setInConnections(boolean inConnections) {
+        isInConnections = inConnections;
     }
 }
