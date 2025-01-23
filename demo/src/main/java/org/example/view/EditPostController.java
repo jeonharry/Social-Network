@@ -44,11 +44,11 @@ public class EditPostController implements Initializable {
 
     @FXML
     void save(MouseEvent event) throws IOException {
+        post.setCaption(txt_caption.getText());
         if(file != null){
-            post.setCaption(txt_caption.getText());
             post.setImage(file.toURI().toString());
-            back();
         }
+        back();
     }
 
     @FXML

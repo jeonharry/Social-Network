@@ -52,10 +52,9 @@ public class ConnectionsPageController implements Initializable {
         user=Controller.getController().getUsersProfiles().peek();
         username_lbl.setText(user.getUsername());
         connectionNum_lbl.setText(String.valueOf(Database.getDatabase().getConnections().values(user.getUsername()).size()));
-        if(connections.getRowCount()<Database.getDatabase().getConnections().values(user.getUsername()).size())
+        if(connections.getRowCount()<Database.getDatabase().getConnections().values(user.getUsername()).size()+6)
         {
-            //+suggestions size
-            while (connections.getRowCount()<Database.getDatabase().getConnections().values(user.getUsername()).size())
+            while (connections.getRowCount()<Database.getDatabase().getConnections().values(user.getUsername()).size()+6)
                 connections.addRow(connections.getRowCount());
         }
         int counter=1;
