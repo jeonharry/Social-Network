@@ -83,6 +83,7 @@ public class ProfileBoxController implements Initializable {
     @FXML
     void connect(MouseEvent event) throws IOException {
         Database.getDatabase().getConnections().insert(user.getUsername(),UserController.getUserController().getUser().getUsername());
+        UserController.getUserController().updateSuggestions();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ConnectionsPage.fxml"));
         Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
     }

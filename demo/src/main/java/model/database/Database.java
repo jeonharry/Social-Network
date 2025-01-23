@@ -60,6 +60,7 @@ public class Database {
     public void deleteUSer(User user){
         getUsers().remove(user.getUsername());
         getConnections().remove(user.getUsername());
+        orderOfSignup.remove(user.getUsername());
         users.values().forEach(account -> account.getPosts().forEach(post -> post.getComments().stream().filter(comment -> comment.getSender().equals(user)).forEach(comment -> comment.setSender(users.get("Deleted Account")))));
     }
 

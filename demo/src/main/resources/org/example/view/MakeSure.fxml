@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.MakeSureController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="31.0" layoutY="35.0" prefHeight="130.0" prefWidth="237.0" spacing="10.0" style="-fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #FEDA75, #FA7E1E, #D62976, #962FBF, #4F5BD5);" stylesheets="@StyleVbox.css">
+         <children>
+            <Label text="Are you sure?" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="12.0" />
+               </VBox.margin>
+            </Label>
+            <Line endX="134.0" startX="-100.0" strokeWidth="0.6">
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.9960784316062927" green="0.8549019694328308" blue="0.4588235318660736" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.2599514164724419">
+                           <color>
+                              <Color red="0.9803921580314636" green="0.4941176474094391" blue="0.11764705926179886" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.5291665298887173">
+                           <color>
+                              <Color red="0.8392156958580017" green="0.16078431904315948" blue="0.4627451002597809" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.7847716902471852">
+                           <color>
+                              <Color red="0.5882353186607361" green="0.18431372940540314" blue="0.7490196228027344" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.30980393290519714" green="0.35686275362968445" blue="0.8352941274642944" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </stroke></Line>
+            <HBox alignment="TOP_CENTER" prefHeight="48.0" prefWidth="236.0" spacing="60.0">
+               <children>
+                  <Label alignment="CENTER" onMouseClicked="#sayNo" prefHeight="35.0" prefWidth="60.0" style="-fx-background-color: #151515; -fx-background-radius: 10;" text="No" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
+                  <Label alignment="CENTER" onMouseClicked="#sayYes" prefHeight="35.0" prefWidth="60.0" style="-fx-background-color: #151515; -fx-background-radius: 10;" text="Yes" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
