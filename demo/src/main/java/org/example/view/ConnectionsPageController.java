@@ -1,6 +1,7 @@
 package org.example.view;
 
 import controller.Controller;
+import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -69,8 +70,16 @@ public class ConnectionsPageController implements Initializable {
             }
         }
         Label label=makeLabel();
-        connections.add(label,0,counter);
-        //add sugggestions
+        connections.add(label,0,counter++);
+        for(User user: Database.getDatabase().suggestions(UserController.getUserController().getUser().getUsername()))
+        {
+            ProfileBoxController.setRecentUser(user);
+            try {
+                connections.add(new FXMLLoader(Main.class.getResource("ProfileBox.fxml")).load(),0, counter++);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
     public Label makeLabel()
     {
