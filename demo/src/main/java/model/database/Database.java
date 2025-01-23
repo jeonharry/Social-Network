@@ -67,6 +67,12 @@ public class Database {
         getUsers().remove(user.getUsername());
         getUsers().put(newUser.getUsername(),newUser);
         users.values().forEach(account -> account.getPosts().forEach(post -> post.getComments().stream().filter(comment -> comment.getSender().equals(user)).forEach(comment -> comment.setSender(newUser))));
+        users.values().forEach(account -> account.getPosts().forEach(post -> {
+            if(post.getLikes().contains(user.getUsername())){
+                post.getLikes().remove(user.getUsername());
+                post.getLikes().add(newUser.getUsername());
+            }
+        }));
         getConnections().edite(user.getUsername(),newUser.getUsername());
     }
 
