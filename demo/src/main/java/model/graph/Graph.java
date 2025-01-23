@@ -52,4 +52,36 @@ public class Graph {
          graph.put(newKey,graph.get(key));
          graph.remove(key);
      }
+
+     public ArrayList<String> findSharing(String key){
+         Map<String, Integer> mp = new HashMap<>();
+         for(String connectionKey : graph.get(key)){
+             for(String share : graph.get(connectionKey)){
+                 if(!graph.get(key).contains(share)){
+                     if(!mp.containsKey(share))
+                         mp.put(share,1);
+                     else
+                        mp.put(share,mp.get(share)+1);
+
+                 }
+             }
+         }
+         PriorityQueue<Pair> pairs = new PriorityQueue<>(Collections.reverseOrder());
+         for(Map.Entry<String,Integer> entry : mp.entrySet()){
+             int num = graph.get(key).size()+graph.get(entry.getKey()).size() - 2 * entry.getValue();
+             double chance = 1;
+             if(num!=0){
+                 chance = (double) entry.getValue() /num;
+             }
+             pairs.add(new Pair(chance,entry.getKey()));
+         }
+         int cnt = 6;
+         ArrayList<String> answer = new ArrayList<>();
+         while (cnt>0 && !pairs.isEmpty()){
+             answer.add(pairs.poll().key());
+             cnt--;
+         }
+         return answer;
+     }
+     record Pair(Double chance, String key){}
 }
