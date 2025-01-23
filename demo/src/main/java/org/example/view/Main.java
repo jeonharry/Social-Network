@@ -30,7 +30,11 @@ public class Main extends Application {
         User user3=new User("bale","bala","1234","baba666@gmail.com",null,"NO major",Main.class.getResource("pics/images(1).jpg").toExternalForm());
         User user4=new User("pp","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
         User user5=new User("tt","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
-        User user6=new User("ee","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
+        User user6=new User("aa","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
+        User user7=new User("bb","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
+        User user8=new User("cc","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
+        User user9=new User("dd","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
+        User user10=new User("ff","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
         Post post1=new Post(Main.class.getResource("pics/image123.jpg").toExternalForm(),"This is dope guys!",user1);
         post1.getComments().add(new Comment("wow, thats cool",user1));
         post1.getComments().add(new Comment("wow!",user2));
@@ -41,10 +45,23 @@ public class Main extends Application {
         Database.getDatabase().add("bale",user3);
         Database.getDatabase().add("pp",user4);
         Database.getDatabase().add("tt",user5);
-        Database.getDatabase().add("ee",user6);
+        Database.getDatabase().add("aa",user6);
+        Database.getDatabase().add("bb",user7);
+        Database.getDatabase().add("cc",user8);
+        Database.getDatabase().add("dd",user9);
+        Database.getDatabase().add("ff",user10);
         Database.getDatabase().getConnections().insert("jeonharry","mina");
         Database.getDatabase().getConnections().insert("jeonharry","bale");
         Database.getDatabase().getConnections().insert("mina","bale");
+        Database.getDatabase().getConnections().insert("dd","bale");
+        Database.getDatabase().getConnections().insert("ee","bale");
+        Database.getDatabase().getConnections().insert("cc","bale");
+        Database.getDatabase().getConnections().insert("aa","bale");
+        Database.getDatabase().getConnections().insert("dd","bale");
+        Database.getDatabase().getConnections().insert("ff","bale");
+        Database.getDatabase().getConnections().insert("bb","bale");
+//        for(String user : Database.getDatabase().getConnections().values("bale"))
+//            System.out.println(user);
         launch();
     }
 
