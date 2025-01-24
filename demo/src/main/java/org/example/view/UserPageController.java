@@ -26,7 +26,6 @@ import model.database.Database;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class UserPageController implements Initializable {
@@ -39,9 +38,6 @@ public class UserPageController implements Initializable {
 
     @FXML
     private ImageView img_menu;
-
-    @FXML
-    private ImageView img_plus;
 
     @FXML
     private Label lbl_bio;

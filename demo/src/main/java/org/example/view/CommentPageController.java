@@ -44,10 +44,6 @@ public class CommentPageController implements Initializable {
         }
     }
 
-    public static Comment getComment() {
-        return comment;
-    }
-
     public static void setComment(Comment comment) {
         CommentPageController.comment = comment;
     }

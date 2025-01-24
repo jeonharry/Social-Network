@@ -7,9 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -25,21 +23,13 @@ import java.util.ResourceBundle;
 public class ConnectionsPageController implements Initializable {
 
     @FXML
-    private ImageView back_img;
-
-    @FXML
     private Label connectionNum_lbl;
 
     @FXML
     private VBox connections;
 
     @FXML
-    private AnchorPane root;
-
-    @FXML
     private Label username_lbl;
-
-    private User user;
 
     @FXML
     void back(MouseEvent event) throws IOException {
@@ -50,7 +40,7 @@ public class ConnectionsPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        user=Controller.getController().getUsersProfiles().peek();
+        User user = Controller.getController().getUsersProfiles().peek();
         username_lbl.setText(user.getUsername());
         connectionNum_lbl.setText(String.valueOf(Database.getDatabase().getConnections().values(user.getUsername()).size()));
         Label label=makeLabel("All Connections");

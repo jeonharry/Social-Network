@@ -39,7 +39,7 @@ public class ImagePostController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.post = recently;
+        this.post = getRecently();
         img_post.setImage(new Image(post.getImage()));
     }
 }

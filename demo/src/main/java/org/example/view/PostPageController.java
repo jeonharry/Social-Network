@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -22,9 +21,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class PostPageController implements Initializable {
-
-    @FXML
-    private ImageView back_img;
 
     @FXML
     private ImageView img_post;
@@ -71,7 +67,7 @@ public class PostPageController implements Initializable {
 
     @FXML
     void like(MouseEvent event) {
-        if(openedPost.getLikes().contains(UserController.getUserController().getUser().getUsername()))
+        if(openedPost.isLike(UserController.getUserController().getUser().getUsername()))
         {
             like_img.setImage(new Image(Main.class.getResource("pics/Clipped_image_20250121_160734.png").toExternalForm()));
             openedPost.getLikes().remove(UserController.getUserController().getUser().getUsername());
@@ -80,7 +76,7 @@ public class PostPageController implements Initializable {
         else
         {
             like_img.setImage(new Image(Main.class.getResource("pics/Clipped_image_20250121_165246.png").toExternalForm()));
-            openedPost.getLikes().add(UserController.getUserController().getUser().getUsername());
+            openedPost.addLike(UserController.getUserController().getUser().getUsername());
             lbl_likeNumber.setText(String.valueOf(openedPost.getLikes().size()));
         }
     }
@@ -103,7 +99,7 @@ public class PostPageController implements Initializable {
         ImagePattern imagePattern=new ImagePattern(new Image(openedPost.getOwner().getProfile()));
         prof_img.setFill(imagePattern);
         img_post.setImage(new Image(openedPost.getImage()));
-        if(openedPost.getLikes().contains(UserController.getUserController().getUser().getUsername()))
+        if(openedPost.isLike(UserController.getUserController().getUser().getUsername()))
             like_img.setImage(new Image(Main.class.getResource("pics/Clipped_image_20250121_165246.png").toExternalForm()));
         if(username_lbl.getText().compareTo(UserController.getUserController().getUser().getUsername())!=0)
             menu_img.setVisible(false);

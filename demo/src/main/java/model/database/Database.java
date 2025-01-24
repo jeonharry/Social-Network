@@ -7,17 +7,18 @@ import org.example.view.Main;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Database {
     private static Database database;
     private final Map<String, User> users;
     private final ArrayList<String> orderOfSignup;
-    private Graph connections;
+    private final Graph connections;
     private Database() {
         this.users = new HashMap<>();
         this.connections=new Graph();
         this.orderOfSignup = new ArrayList<>();
-        this.users.put("Deleted Account", new User("Deleted Account",null,null,null, Main.class.getResource("pics/images(5).png").toExternalForm()));
+        this.users.put("Deleted Account", new User("Deleted Account",null,null,null, Objects.requireNonNull(Main.class.getResource("pics/images(5).png")).toExternalForm()));
     }
 
     public static Database getDatabase() {
@@ -32,10 +33,6 @@ public class Database {
 
     public Graph getConnections() {
         return connections;
-    }
-
-    public void setConnections(Graph connections) {
-        this.connections = connections;
     }
 
     public boolean exist(String username)
@@ -69,9 +66,9 @@ public class Database {
         getUsers().put(newUser.getUsername(),newUser);
         users.values().forEach(account -> account.getPosts().forEach(post -> post.getComments().stream().filter(comment -> comment.getSender().equals(user)).forEach(comment -> comment.setSender(newUser))));
         users.values().forEach(account -> account.getPosts().forEach(post -> {
-            if(post.getLikes().contains(user.getUsername())){
+            if(post.isLike(user.getUsername())){
                 post.getLikes().remove(user.getUsername());
-                post.getLikes().add(newUser.getUsername());
+                post.addLike(newUser.getUsername());
             }
         }));
         getConnections().edite(user.getUsername(),newUser.getUsername());

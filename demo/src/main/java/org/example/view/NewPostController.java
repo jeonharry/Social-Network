@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -31,8 +30,6 @@ public class NewPostController implements Initializable {
     @FXML
     private TextArea txt_caption;
 
-    @FXML
-    private VBox vbox;
     private File file;
 
     @FXML

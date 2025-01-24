@@ -36,9 +36,9 @@ public class Main extends Application {
         User user9=new User("dd","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
         User user10=new User("ff","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
         Post post1=new Post(Main.class.getResource("pics/image123.jpg").toExternalForm(),"This is dope guys!",user1);
-        post1.getComments().add(new Comment("wow, thats cool",user1));
-        post1.getComments().add(new Comment("wow!",user2));
-        post1.getComments().add(new Comment("Nah",user3));
+        post1.addComment(new Comment("wow, thats cool",user1));
+        post1.addComment(new Comment("wow!",user2));
+        post1.addComment(new Comment("Nah",user3));
         user1.getPosts().addLast(post1);
         Database.getDatabase().add("jeonharry",user1);
         Database.getDatabase().add("mina",user2);
@@ -64,9 +64,5 @@ public class Main extends Application {
 
     public static Stage getStage() {
         return stage;
-    }
-
-    public static void setStage(Stage stage) {
-        Main.stage = stage;
     }
 }

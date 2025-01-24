@@ -9,7 +9,7 @@ public class Post {
     private String caption;
     private final ArrayList<Comment> comments;
     private final Set<String> likes;
-    private User owner;
+    private final User owner;
 
     public Post(String image, String caption,User owner) {
         this.image = image;
@@ -34,12 +34,11 @@ public class Post {
     public ArrayList<Comment> getComments() {
         return comments;
     }
-    public Set<String> getLikes() {
-        return likes;
-    }
-
     public void addComment(Comment comment){
         comments.add(comment);
+    }
+    public Set<String> getLikes() {
+        return likes;
     }
     public void addLike(String user) {
         likes.add(user);
@@ -49,8 +48,5 @@ public class Post {
     }
     public User getOwner() {
         return owner;
-    }
-    public void setOwner(User owner) {
-        this.owner = owner;
     }
 }
