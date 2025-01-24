@@ -47,11 +47,11 @@ public class Database {
     {
         return users.get(username);
     }
-    public void add(String username,User user)
+    public void add(User user)
     {
-        users.put(username,user);
-        connections.insert(username);
-        orderOfSignup.add(username);
+        users.put(user.getUsername(),user);
+        connections.insert(user.getUsername());
+        orderOfSignup.add(user.getUsername());
     }
 
     public void deleteUSer(User user){

@@ -44,7 +44,7 @@ public class UserController {
     }
     public void levelTwoSignup(String date) {
         user.setBirthdate(new Date(date));
-        Database.getDatabase().add(user.getUsername(),user);
+        Database.getDatabase().add(user);
         updateSuggestions();
     }
     public int checkPassword(String password){
