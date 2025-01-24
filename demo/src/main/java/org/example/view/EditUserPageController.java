@@ -72,12 +72,15 @@ public class EditUserPageController implements Initializable {
     void save(MouseEvent event) throws IOException {
         if(!txt_fullName.getText().isEmpty() && !txt_username.getText().isEmpty()){
             if(!user.getUsername().equals(txt_username.getText())){
+                int i=Controller.getController().getUsersProfiles().indexOf(user);
+                Controller.getController().getUsersProfiles().remove(user);
                 try {
                     if(file != null)
                         UserController.getUserController().editUser(txt_username.getText(),txt_fullName.getText(),txt_bio.getText(),file.toURI().toString());
                     else
                         UserController.getUserController().editUser(txt_username.getText(),txt_fullName.getText(),txt_bio.getText(),user.getProfile());
                     UserPageController.setUser(UserController.getUserController().getUser());
+                    Controller.getController().getUsersProfiles().add(i,UserController.getUserController().getUser());
                     back();
                 } catch (UserNameExists exception) {
                     Label error=makeLabel(exception.getMessage());

@@ -71,6 +71,10 @@ public class Database {
                 post.addLike(newUser.getUsername());
             }
         }));
+        user.getPosts().forEach(post -> post.setOwner(newUser));
+        int i=orderOfSignup.indexOf(user.getUsername());
+        orderOfSignup.remove(user.getUsername());
+        orderOfSignup.add(i,newUser.getUsername());
         getConnections().edite(user.getUsername(),newUser.getUsername());
     }
 

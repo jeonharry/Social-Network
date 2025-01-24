@@ -9,7 +9,7 @@ public class Post {
     private String caption;
     private final ArrayList<Comment> comments;
     private final Set<String> likes;
-    private final User owner;
+    private User owner;
 
     public Post(String image, String caption,User owner) {
         this.image = image;
@@ -48,5 +48,8 @@ public class Post {
     }
     public User getOwner() {
         return owner;
+    }
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }
