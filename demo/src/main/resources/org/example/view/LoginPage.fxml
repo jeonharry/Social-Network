@@ -39,8 +39,8 @@
                      </VBox.margin>
                      <children>
                         <PasswordField fx:id="passwordHiding" onKeyPressed="#changeColor2" prefHeight="40.0" prefWidth="308.0" promptText="password" stylesheets="@StyleTextField2.css" />
-                        <TextField fx:id="passwordShowing" disable="true" onKeyPressed="#changeColor1" prefHeight="40.0" prefWidth="238.0" promptText="password" stylesheets="@StyleTextField2.css" visible="false" />
-                        <ImageView fx:id="showPassword" fitHeight="22.0" fitWidth="22.0" onMouseClicked="#showPassword" pickOnBounds="true" preserveRatio="true">
+                        <TextField fx:id="passwordShowing" disable="true" onKeyPressed="#changeColor2" prefHeight="40.0" prefWidth="238.0" promptText="password" stylesheets="@StyleTextField2.css" visible="false" />
+                        <ImageView fx:id="showPassword" fitHeight="21.0" fitWidth="21.0" onMouseClicked="#showPassword" pickOnBounds="true" preserveRatio="true">
                            <StackPane.margin>
                               <Insets left="220.0" />
                            </StackPane.margin>

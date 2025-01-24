@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -29,7 +31,13 @@ public class SignupPageController{
     private TextField fullName;
 
     @FXML
-    private PasswordField password;
+    private PasswordField passwordHiding;
+
+    @FXML
+    private TextField passwordShowing;
+
+    @FXML
+    private ImageView showPassword;
 
     @FXML
     private TextField username;
@@ -46,7 +54,11 @@ public class SignupPageController{
 
     @FXML
     void checkPassword(KeyEvent event) {
-        int score = UserController.getUserController().checkPassword(password.getText());
+        int score=0;
+        if(passwordHiding.isVisible())
+            score = UserController.getUserController().checkPassword(passwordHiding.getText());
+        else
+            score = UserController.getUserController().checkPassword(passwordShowing.getText());
         if(vbox.getChildren().get(2) instanceof Label) vbox.getChildren().remove(2);
         if(vbox.getChildren().get(4) instanceof Label) vbox.getChildren().remove(4);
         Label error;
@@ -80,7 +92,10 @@ public class SignupPageController{
         {
             try
             {
-                UserController.getUserController().levelOneSignup(username.getText(),fullName.getText(),password.getText(),email.getText(),Main.class.getResource("pics/images(5).png").toExternalForm());
+                if(passwordHiding.isVisible())
+                    UserController.getUserController().levelOneSignup(username.getText(),fullName.getText(),passwordHiding.getText(),email.getText(),Main.class.getResource("pics/images(5).png").toExternalForm());
+                else
+                    UserController.getUserController().levelOneSignup(username.getText(),fullName.getText(),passwordShowing.getText(),email.getText(),Main.class.getResource("pics/images(5).png").toExternalForm());
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("DatePickPage.fxml"));
                 Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
             }catch (NotValidEmail exception)
@@ -150,5 +165,23 @@ public class SignupPageController{
             usernameEntered=true;
         if(passwordEntered && emailEntered && fullNameEntered && usernameEntered)
             nextLabel.setTextFill(Paint.valueOf("white"));
+    }
+
+    @FXML
+    void showPassword(MouseEvent event) {
+        if(passwordHiding.isVisible())
+        {
+            showPassword.setImage(new Image(Main.class.getResource("pics/Screenshot 2025-01-24 17.png").toExternalForm()));
+            passwordShowing.setText(passwordHiding.getText());
+        }
+        else
+        {
+            showPassword.setImage(new Image(Main.class.getResource("pics/Screenshot 2025-01-24 125507.png").toExternalForm()));
+            passwordHiding.setText(passwordShowing.getText());
+        }
+        passwordHiding.setVisible(!passwordHiding.isVisible());
+        passwordShowing.setVisible(!passwordShowing.isVisible());
+        passwordShowing.setDisable(!passwordShowing.isDisable());
+        passwordHiding.setDisable(!passwordHiding.isDisable());
     }
 }

@@ -7,12 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
@@ -75,6 +74,18 @@ public class UserPageController implements Initializable {
     private Label logout_lbl;
 
     @FXML
+    private ScrollPane scrollPane;
+
+    @FXML
+    private ImageView noPost_img;
+
+    @FXML
+    private HBox notConnectInfo;
+
+    @FXML
+    private StackPane connect_btn;
+
+    @FXML
     void newPost(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("NewPost.fxml"));
         Controller.getController().getRoot().getChildren().addLast(loader.load());
@@ -107,8 +118,8 @@ public class UserPageController implements Initializable {
         else
         {
             UserPageController.setUser(Controller.getController().getUsersProfiles().peek());
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
-            Main.getStage().setScene(new Scene(fxmlLoader.load(),700,650));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ConnectionsPage.fxml"));
+            Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
         }
     }
 
@@ -122,26 +133,40 @@ public class UserPageController implements Initializable {
         lbl_connectionsNumber.setText(String.valueOf(Database.getDatabase().getConnections().values(user.getUsername()).size()));
         ImagePattern profile = new ImagePattern(new Image(user.getProfile()));
         crl_profile.setFill(profile);
-        back_img.setVisible(user.getUsername().compareTo(UserController.getUserController().getUser().getUsername())!=0);
+        back_img.setVisible(!Controller.getController().getOpenedPages().isEmpty());
         int counter = 0;
-        for(Post post : user.getPosts()){
-            ImagePostController.setRecently(post);
-            try {
-                grid_posts.add(new FXMLLoader(Main.class.getResource("ImagePost.fxml")).load(),counter%3, counter++/3);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        if(Database.getDatabase().getConnections().values(UserController.getUserController().getUser().getUsername()).contains(user.getUsername()) || user.getUsername().compareTo(UserController.getUserController().getUser().getUsername())==0)
+        {
+            if(user.getPosts().isEmpty())
+            {
+                noPost_img.setVisible(true);
+                scrollPane.setVisible(false);
             }
+            else
+                scrollPane.setVisible(true);
+            notConnectInfo.setVisible(false);
+            connect_btn.setVisible(false);
+            connect_btn.setDisable(true);
+            for(Post post : user.getPosts()){
+                ImagePostController.setRecently(post);
+                try {
+                    grid_posts.add(new FXMLLoader(Main.class.getResource("ImagePost.fxml")).load(),counter%3, counter++/3);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        else
+        {
+            connect_btn.setVisible(true);
+            connect_btn.setDisable(false);
+            noPost_img.setVisible(false);
+            scrollPane.setVisible(false);
+            notConnectInfo.setVisible(true);
         }
         moreOptions.setVisible(false);
         if(user.getUsername().compareTo(UserController.getUserController().getUser().getUsername())!=0)
             img_menu.setVisible(false);
-        else
-        {
-            Controller.getController().getOpenedPages().clear();
-            Controller.getController().getOpenedPosts().clear();
-            Controller.getController().getUsersProfiles().clear();
-            Controller.getController().getUsersProfiles().push(UserController.getUserController().getUser());
-        }
     }
 
     public static User getUser() {
@@ -178,6 +203,7 @@ public class UserPageController implements Initializable {
         stage.setScene(new Scene(new FXMLLoader(Main.class.getResource("MakeSure.fxml")).load(),300,200));
         stage.initOwner(Main.getStage());
         stage.initModality(Modality.WINDOW_MODAL);
+        stage.setResizable(false);
         stage.showAndWait();
     }
     @FXML
@@ -212,5 +238,13 @@ public class UserPageController implements Initializable {
             delete_lbl.setTextFill(Paint.valueOf("#b73b3b"));
         else
             logout_lbl.setTextFill(Paint.valueOf("#b73b3b"));
+    }
+
+    @FXML
+    void connect(MouseEvent event) throws IOException {
+        Database.getDatabase().getConnections().insert(user.getUsername(),UserController.getUserController().getUser().getUsername());
+        UserController.getUserController().updateSuggestions();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
+        Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
     }
 }

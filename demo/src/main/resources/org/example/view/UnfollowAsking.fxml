@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="680.0" prefWidth="460.0" style="-fx-background-color: #2e2e2e99;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.view.UnfollowAskingController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="680.0" layoutX="2.0" layoutY="-2.0" onMouseClicked="#cancel" stroke="TRANSPARENT" strokeType="INSIDE" width="454.0" />
+      <VBox alignment="TOP_CENTER" layoutX="105.0" layoutY="165.0" prefHeight="330.0" prefWidth="240.0" spacing="10.0" style="-fx-background-color: #2b2c2e; -fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #FEDA75 0%, #FA7E1E 20%, #D62976 40%, #962FBF 60%, #4F5BD5 80%); -fx-background-radius: 25; -fx-border-radius: 25; -fx-border-width: 1;">
+         <children>
+            <Circle fx:id="profile_crl" fill="DODGERBLUE" radius="47.0" stroke="TRANSPARENT" strokeType="INSIDE">
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Circle>
+            <Label fx:id="username_lbl" text="username" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="disconnect_lbl" onMouseClicked="#disConnect" onMouseEntered="#changeColorEntered" onMouseExited="#changeColorExit" text="Disconnect" textFill="#b71010">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label fx:id="cancel_lbl" onMouseClicked="#cancel" onMouseEntered="#changeColorEntered" onMouseExited="#changeColorExit" text="Cancel" textFill="#bfbfbf">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></Label>
+         </children>
+         <effect>
+            <DropShadow height="35.0" radius="17.0" spread="0.05" width="35.0">
+               <color>
+                  <Color red="0.08421052992343903" green="0.08421052992343903" blue="0.08421052992343903" />
+               </color>
+            </DropShadow>
+         </effect>
+      </VBox>
+   </children>
+</AnchorPane>

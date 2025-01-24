@@ -18,7 +18,7 @@
             <Circle fx:id="prof_img" fill="#008cff" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
             <Label fx:id="username_lbl" prefHeight="22.0" prefWidth="342.0" text="username" textFill="WHITE">
                <font>
-                  <Font name="Calibri Bold" size="17.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
             </Label>
             <ImageView fx:id="menu_img" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#openMoreOptions" pickOnBounds="true" preserveRatio="true" rotate="90.0">

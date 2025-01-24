@@ -14,6 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Post;
 
 import java.io.IOException;
@@ -120,8 +122,24 @@ public class PostPageController implements Initializable {
 
     @FXML
     void deletePost(MouseEvent event) throws IOException {
-        openedPost.getOwner().getPosts().remove(openedPost);
-        back();
+        makeSure();
+        if(Controller.getController().isMakeSure())
+        {
+            openedPost.getOwner().getPosts().remove(openedPost);
+            back();
+        }
+    }
+
+    private void makeSure() throws IOException {
+        Stage stage=new Stage();
+        Controller.getController().setMakeSureStage(stage);
+        stage.setScene(new Scene(new FXMLLoader(Main.class.getResource("MakeSure.fxml")).load(),300,200));
+        stage.initOwner(Main.getStage());
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.setX(490);
+        stage.setY(200);
+        stage.setResizable(false);
+        stage.showAndWait();
     }
 
     @FXML

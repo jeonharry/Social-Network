@@ -34,14 +34,11 @@ public class CommentPageController implements Initializable {
 
     @FXML
     void openProfile(MouseEvent event) throws IOException {
-        if(Database.getDatabase().getConnections().values(UserController.getUserController().getUser().getUsername()).contains(username_lbl.getText()))
-        {
-            UserPageController.setUser(Database.getDatabase().getUser(username_lbl.getText()));
-            Controller.getController().getUsersProfiles().push(Database.getDatabase().getUser(username_lbl.getText()));
-            Controller.getController().getOpenedPages().push(OpenedPage.THROUGH_COMMENTS);
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
-            Main.getStage().setScene(new Scene(fxmlLoader.load(),700,650));
-        }
+        UserPageController.setUser(Database.getDatabase().getUser(username_lbl.getText()));
+        Controller.getController().getUsersProfiles().push(Database.getDatabase().getUser(username_lbl.getText()));
+        Controller.getController().getOpenedPages().push(OpenedPage.THROUGH_COMMENTS);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
+        Main.getStage().setScene(new Scene(fxmlLoader.load(),700,650));
     }
 
     public static void setComment(Comment comment) {

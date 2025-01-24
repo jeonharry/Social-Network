@@ -18,7 +18,7 @@
    <children>
       <VBox layoutX="195.0" layoutY="57.0" prefHeight="520.0" prefWidth="300.0" spacing="10.0" style="-fx-background-color: black;">
          <children>
-            <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="450.0" prefWidth="300.0" spacing="10.0" style="-fx-border-color: #919191; -fx-background-color: black; -fx-border-width: 0.6;">
+            <VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="450.0" prefWidth="300.0" spacing="10.0" style="-fx-border-color: linear-gradient(from 0% 0% to 100% 100%, #FEDA75 0%, #FA7E1E 20%, #D62976 40%, #962FBF 60%, #4F5BD5 80%); -fx-background-color: black; -fx-border-width: 0.6;">
                <children>
                   <ImageView fitHeight="77.0" fitWidth="159.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,11 +38,26 @@
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
                   </TextField>
-                  <PasswordField fx:id="password" onKeyReleased="#checkPassword" prefHeight="40.0" prefWidth="308.0" promptText="Password" stylesheets="@StyleTextField2.css">
+                  <StackPane>
+                     <children>
+                        <PasswordField fx:id="passwordHiding" onKeyPressed="#checkPassword" prefHeight="40.0" prefWidth="308.0" promptText="password" stylesheets="@StyleTextField2.css" />
+                        <TextField fx:id="passwordShowing" disable="true" onKeyPressed="#checkPassword" prefHeight="40.0" prefWidth="238.0" promptText="password" stylesheets="@StyleTextField2.css" visible="false" />
+                        <ImageView fx:id="showPassword" fitHeight="21.0" fitWidth="21.0" onMouseClicked="#showPassword" pickOnBounds="true" preserveRatio="true">
+                           <StackPane.margin>
+                              <Insets left="220.0" />
+                           </StackPane.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@pics/Screenshot%202025-01-24%20125507.png" />
+                           </image>
+                        </ImageView>
+                     </children>
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" />
                      </VBox.margin>
-                  </PasswordField>
+                  </StackPane>
                   <TextField fx:id="username" onKeyPressed="#changeColor" prefHeight="40.0" prefWidth="238.0" promptText="Username" stylesheets="@StyleTextField2.css">
                      <VBox.margin>
                         <Insets left="25.0" right="25.0" />
@@ -70,7 +85,7 @@
                   </StackPane>
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="280.0" style="-fx-background-color: black; -fx-border-color: #919191; -fx-border-width: 0.6;">
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="280.0" style="-fx-background-color: black; -fx-border-color: linear-gradient(from 100% 100% to 0% 0%, #FEDA75 0%, #FA7E1E 20%, #D62976 40%, #962FBF 60%, #4F5BD5 80%); -fx-border-width: 0.6;">
                <children>
                   <Label text="Have an account? " textFill="WHITE" />
                   <Label onMouseClicked="#openLoginPage" text="Log in" textFill="#00aeff">

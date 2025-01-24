@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -21,6 +22,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ConnectionsPageController implements Initializable {
+
+    @FXML
+    private AnchorPane root;
 
     @FXML
     private Label connectionNum_lbl;
@@ -40,6 +44,7 @@ public class ConnectionsPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Controller.getController().setRoot(root);
         User user = Controller.getController().getUsersProfiles().peek();
         username_lbl.setText(user.getUsername());
         connectionNum_lbl.setText(String.valueOf(Database.getDatabase().getConnections().values(user.getUsername()).size()));

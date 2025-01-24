@@ -52,16 +52,19 @@ public class ProfileBoxController implements Initializable {
 
     @FXML
     void unfollow(MouseEvent event) throws IOException {
+        event.consume();
         if(UserController.getUserController().getSuggestions().contains(user))
         {
             UserController.getUserController().getSuggestions().remove(user);
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ConnectionsPage.fxml"));
+            Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
         }
         else
         {
-            Database.getDatabase().getConnections().remove(user.getUsername(),UserController.getUserController().getUser().getUsername());
+            UnfollowAskingController.setUser(Database.getDatabase().getUser(username_lbl.getText()));
+            FXMLLoader loader = new FXMLLoader(Main.class.getResource("UnfollowAsking.fxml"));
+            Controller.getController().getRoot().getChildren().addLast(loader.load());
         }
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ConnectionsPage.fxml"));
-        Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
     }
 
     @Override
@@ -82,6 +85,7 @@ public class ProfileBoxController implements Initializable {
 
     @FXML
     void connect(MouseEvent event) throws IOException {
+        event.consume();
         Database.getDatabase().getConnections().insert(user.getUsername(),UserController.getUserController().getUser().getUsername());
         UserController.getUserController().updateSuggestions();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ConnectionsPage.fxml"));
