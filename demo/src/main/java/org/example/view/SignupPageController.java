@@ -171,12 +171,12 @@ public class SignupPageController{
     void showPassword(MouseEvent event) {
         if(passwordHiding.isVisible())
         {
-            showPassword.setImage(new Image(Main.class.getResource("pics/Screenshot 2025-01-24 17.png").toExternalForm()));
+            showPassword.setImage(new Image(Main.class.getResource("pics/view_10812294.png").toExternalForm()));
             passwordShowing.setText(passwordHiding.getText());
         }
         else
         {
-            showPassword.setImage(new Image(Main.class.getResource("pics/Screenshot 2025-01-24 125507.png").toExternalForm()));
+            showPassword.setImage(new Image(Main.class.getResource("pics/invisible_15600742.png").toExternalForm()));
             passwordHiding.setText(passwordShowing.getText());
         }
         passwordHiding.setVisible(!passwordHiding.isVisible());

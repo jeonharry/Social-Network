@@ -64,7 +64,7 @@ public class NewPostController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         file = null;
-        img_post.setImage(new Image(Objects.requireNonNull(Main.class.getResource("pics/no_image.png")).toExternalForm()));
+        img_post.setImage(new Image(Objects.requireNonNull(Main.class.getResource("pics/photo_15627136.png")).toExternalForm()));
 
     }
 

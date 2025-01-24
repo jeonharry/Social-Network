@@ -24,11 +24,11 @@
             <Image url="@pics/Clipped_image_20250121_160218.png" />
          </image>
       </ImageView>
-      <VBox fx:id="vbox" alignment="TOP_CENTER" layoutX="173.0" layoutY="59.0" prefHeight="540.0" prefWidth="354.0" spacing="5.0" style="-fx-border-color: #919191; -fx-background-color: black; -fx-border-width: 0.6;">
+      <VBox fx:id="vbox" alignment="TOP_CENTER" layoutX="173.0" layoutY="59.0" prefHeight="530.0" prefWidth="354.0" spacing="5.0" style="-fx-border-color: #919191; -fx-background-color: black; -fx-border-width: 0.6;">
          <children>
             <ImageView fx:id="img_post" fitHeight="235.0" fitWidth="243.0" onMouseClicked="#selectPhoto" opacity="0.93" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@pics/no_image.png" />
+                  <Image url="@pics/photo_15627136.png" />
                </image>
                <VBox.margin>
                   <Insets top="25.0" />

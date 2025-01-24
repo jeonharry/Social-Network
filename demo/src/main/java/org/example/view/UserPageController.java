@@ -93,8 +93,11 @@ public class UserPageController implements Initializable {
 
     @FXML
     void showConnections(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ConnectionsPage.fxml"));
-        Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
+        if(user.getUsername().compareTo(UserController.getUserController().getUser().getUsername())==0 || Database.getDatabase().getConnections().values(UserController.getUserController().getUser().getUsername()).contains(user.getUsername()))
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ConnectionsPage.fxml"));
+            Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
+        }
     }
 
     @FXML

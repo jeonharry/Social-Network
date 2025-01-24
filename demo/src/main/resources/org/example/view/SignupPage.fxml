@@ -50,7 +50,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <image>
-                              <Image url="@pics/Screenshot%202025-01-24%20125507.png" />
+                              <Image url="@pics/invisible_15600742.png" />
                            </image>
                         </ImageView>
                      </children>
