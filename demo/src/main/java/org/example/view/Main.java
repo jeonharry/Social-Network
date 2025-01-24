@@ -46,7 +46,7 @@ public class Main extends Application {
         User user9=new User("A.H.A","AmirHossein Ala","1234","jeon666@gmail.com",null,"I'm unstoppable", Objects.requireNonNull(Main.class.getResource("pics/aha.jpg")).toExternalForm());
         User user10=new User("Hossein2","Hossein Momeni","1234","jeon666@gmail.com",null,"World is beautiful because Math is beautiful", Objects.requireNonNull(Main.class.getResource("pics/math.jpg")).toExternalForm());
         Post post1=new Post(Objects.requireNonNull(Main.class.getResource("pics/image123.jpg")).toExternalForm(),"This is dope guys!",user1);
-        post1.addComment(new Comment("wow, thats cool",user1));
+        post1.addComment(new Comment("wow, thats cool",user4));
         post1.addComment(new Comment("wow!",user2));
         post1.addComment(new Comment("Nah",user3));
         user1.getPosts().addLast(post1);
