@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -22,13 +24,19 @@ public class LoginPageController implements Initializable {
 
 
     @FXML
+    private ImageView showPassword;
+
+    @FXML
+    private PasswordField passwordHiding;
+
+    @FXML
+    private TextField passwordShowing;
+
+    @FXML
     private Label loginLabel;
 
     @FXML
     private Label error;
-
-    @FXML
-    private PasswordField password;
 
     @FXML
     private AnchorPane root;
@@ -59,7 +67,10 @@ public class LoginPageController implements Initializable {
         {
             try
             {
-                UserController.getUserController().login(username.getText(),password.getText());
+                if(passwordHiding.isVisible())
+                    UserController.getUserController().login(username.getText(),passwordHiding.getText());
+                else
+                    UserController.getUserController().login(username.getText(),passwordShowing.getText());
                 error.setVisible(false);
                 UserPageController.setUser(UserController.getUserController().getUser());
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));
@@ -84,5 +95,23 @@ public class LoginPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         error.setVisible(false);
         Controller.getController().setRoot(root);
+    }
+
+    @FXML
+    void showPassword(MouseEvent event) {
+        if(passwordHiding.isVisible())
+        {
+            showPassword.setImage(new Image(Main.class.getResource("pics/Screenshot 2025-01-24 17.png").toExternalForm()));
+            passwordShowing.setText(passwordHiding.getText());
+        }
+        else
+        {
+            showPassword.setImage(new Image(Main.class.getResource("pics/Screenshot 2025-01-24 125507.png").toExternalForm()));
+            passwordHiding.setText(passwordShowing.getText());
+        }
+        passwordHiding.setVisible(!passwordHiding.isVisible());
+        passwordShowing.setVisible(!passwordShowing.isVisible());
+        passwordShowing.setDisable(!passwordShowing.isDisable());
+        passwordHiding.setDisable(!passwordHiding.isDisable());
     }
 }
