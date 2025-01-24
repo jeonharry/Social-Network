@@ -19,7 +19,6 @@ import model.exceptions.UserNameExists;
 import model.exceptions.WeakPassword;
 
 import java.io.IOException;
-import java.util.Date;
 
 public class SignupPageController{
 
@@ -137,8 +136,7 @@ public class SignupPageController{
     }
 
     @FXML
-    void openLoginPage(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
+    void openLoginPage(MouseEvent event) {
         Controller.getController().getRoot().getChildren().removeLast();
     }
 

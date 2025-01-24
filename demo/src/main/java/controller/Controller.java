@@ -7,17 +7,15 @@ import model.OpenedPage;
 import model.Post;
 import model.User;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Stack;
 
 public class Controller
 {
     private AnchorPane root;
     private static Controller controller;
-    private Stack <User> usersProfiles;
-    private Stack <Post> openedPosts;
-    private Stack <OpenedPage> openedPages;
+    private final Stack <User> usersProfiles;
+    private final Stack <Post> openedPosts;
+    private final Stack <OpenedPage> openedPages;
     private Label commentsCount;
     private boolean isInConnections=true;
     private boolean makeSure=false;
@@ -45,23 +43,11 @@ public class Controller
     public Stack<User> getUsersProfiles() {
         return usersProfiles;
     }
-
-    public void setUsersProfiles(Stack<User> usersProfiles) {
-        this.usersProfiles = usersProfiles;
-    }
-
     public Stack<Post> getOpenedPosts() {
         return openedPosts;
     }
-
-    public void setOpenedPosts(Stack<Post> openedPosts) {
-        this.openedPosts = openedPosts;
-    }
     public Stack<OpenedPage> getOpenedPages() {
         return openedPages;
-    }
-    public void setOpenedPages(Stack<OpenedPage> openedPages) {
-        this.openedPages = openedPages;
     }
     public Label getCommentsCount() {
         return commentsCount;

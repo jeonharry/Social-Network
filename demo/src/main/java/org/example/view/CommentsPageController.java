@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import model.Comment;
 import model.Post;
@@ -18,12 +16,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class CommentsPageController implements Initializable {
-
-    @FXML
-    private ImageView img_send;
-
-    @FXML
-    private AnchorPane root;
 
     @FXML
     private TextField txtField_comment;
@@ -43,7 +35,7 @@ public class CommentsPageController implements Initializable {
     @FXML
     void sendComment(MouseEvent event) throws IOException {
         Comment newComment=new Comment(txtField_comment.getText(),UserController.getUserController().getUser());
-        post.getComments().add(newComment);
+        post.addComment(newComment);
         if(post.getComments().size()>comments.getRowCount())
             comments.addRow(comments.getRowCount());
         CommentPageController.setComment(newComment);

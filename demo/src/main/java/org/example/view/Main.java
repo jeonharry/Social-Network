@@ -10,6 +10,7 @@ import model.User;
 import model.database.Database;
 
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class Main extends Application {
@@ -25,40 +26,7 @@ public class Main extends Application {
         stage.show();
     }
     public static void main(String[] args) {
-        User user1=new User("jeonharry","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
-        User user2=new User("mina","Mina","1234","mina666@gmail.com",null,"CE major",Main.class.getResource("pics/images(1).jpg").toExternalForm());
-        User user3=new User("bale","bala","1234","baba666@gmail.com",null,"NO major",Main.class.getResource("pics/images(1).jpg").toExternalForm());
-        User user4=new User("pp","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
-        User user5=new User("tt","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
-        User user6=new User("aa","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
-        User user7=new User("bb","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
-        User user8=new User("cc","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
-        User user9=new User("dd","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
-        User user10=new User("ff","harry jeon","1234","jeon666@gmail.com",null,"OK",Main.class.getResource("pics/pic1.jpg").toExternalForm());
-        Post post1=new Post(Main.class.getResource("pics/image123.jpg").toExternalForm(),"This is dope guys!",user1);
-        post1.getComments().add(new Comment("wow, thats cool",user1));
-        post1.getComments().add(new Comment("wow!",user2));
-        post1.getComments().add(new Comment("Nah",user3));
-        user1.getPosts().addLast(post1);
-        Database.getDatabase().add("jeonharry",user1);
-        Database.getDatabase().add("mina",user2);
-        Database.getDatabase().add("bale",user3);
-        Database.getDatabase().add("pp",user4);
-        Database.getDatabase().add("tt",user5);
-        Database.getDatabase().add("aa",user6);
-        Database.getDatabase().add("bb",user7);
-        Database.getDatabase().add("cc",user8);
-        Database.getDatabase().add("dd",user9);
-        Database.getDatabase().add("ff",user10);
-        Database.getDatabase().getConnections().insert("jeonharry","mina");
-        Database.getDatabase().getConnections().insert("jeonharry","bale");
-        Database.getDatabase().getConnections().insert("mina","bale");
-        Database.getDatabase().getConnections().insert("dd","bale");
-        Database.getDatabase().getConnections().insert("cc","bale");
-        Database.getDatabase().getConnections().insert("aa","bale");
-        Database.getDatabase().getConnections().insert("dd","bale");
-        Database.getDatabase().getConnections().insert("ff","bale");
-        Database.getDatabase().getConnections().insert("bb","bale");
+        addUsers();
         launch();
     }
 
@@ -66,7 +34,40 @@ public class Main extends Application {
         return stage;
     }
 
-    public static void setStage(Stage stage) {
-        Main.stage = stage;
+    public static void addUsers(){
+        User user1=new User("jeonharry","harry jeon","1234","jeon666@gmail.com",null,"OK", Objects.requireNonNull(Main.class.getResource("pics/pic1.jpg")).toExternalForm());
+        User user2=new User("mina","Mina Abbapour","1234","mina4434@gmail.com",null,"Happy :)", Objects.requireNonNull(Main.class.getResource("pics/images(1).jpg")).toExternalForm());
+        User user3=new User("bale","bala","1234","baba666@gmail.com",null,"NO major", Objects.requireNonNull(Main.class.getResource("pics/bale.jpg")).toExternalForm());
+        User user4=new User("Sahar","Sahar Fatemi","1234","jeon666@gmail.com",null,"Hello World!", Objects.requireNonNull(Main.class.getResource("pics/sahar.jpg")).toExternalForm());
+        User user5=new User("Ali_Reza","Alireza Sadeghi","1234","jeon666@gmail.com",null,"Lord Of The Rings", Objects.requireNonNull(Main.class.getResource("pics/lord.jpg")).toExternalForm());
+        User user6=new User("Mary","Maryam Kabiri","1234","jeon666@gmail.com",null,"Harry Potter", Objects.requireNonNull(Main.class.getResource("pics/potter.jpg")).toExternalForm());
+        User user7=new User("Kiana","Kiana Fakhrian","1234","jeon666@gmail.com",null,"Piano\nFrance", Objects.requireNonNull(Main.class.getResource("pics/piano.jpg")).toExternalForm());
+        User user8=new User("Mahdi","Mahdi Semsarzade","1234","jeon666@gmail.com",null,"Music is Everything", Objects.requireNonNull(Main.class.getResource("pics/music.jpg")).toExternalForm());
+        User user9=new User("A.H.A","AmirHossein Ala","1234","jeon666@gmail.com",null,"I'm unstoppable", Objects.requireNonNull(Main.class.getResource("pics/aha.jpg")).toExternalForm());
+        User user10=new User("Hossein2","Hossein Momeni","1234","jeon666@gmail.com",null,"World is beautiful because Math is beautiful", Objects.requireNonNull(Main.class.getResource("pics/math.jpg")).toExternalForm());
+        Post post1=new Post(Objects.requireNonNull(Main.class.getResource("pics/image123.jpg")).toExternalForm(),"This is dope guys!",user1);
+        post1.addComment(new Comment("wow, thats cool",user4));
+        post1.addComment(new Comment("wow!",user2));
+        post1.addComment(new Comment("Nah",user3));
+        user1.getPosts().addLast(post1);
+        Database.getDatabase().add(user1);
+        Database.getDatabase().add(user2);
+        Database.getDatabase().add(user3);
+        Database.getDatabase().add(user4);
+        Database.getDatabase().add(user5);
+        Database.getDatabase().add(user6);
+        Database.getDatabase().add(user7);
+        Database.getDatabase().add(user8);
+        Database.getDatabase().add(user9);
+        Database.getDatabase().add(user10);
+        Database.getDatabase().getConnections().insert("jeonharry","mina");
+        Database.getDatabase().getConnections().insert("jeonharry","bale");
+        Database.getDatabase().getConnections().insert("mina","bale");
+        Database.getDatabase().getConnections().insert(user4.getUsername(),"bale");
+        Database.getDatabase().getConnections().insert(user5.getUsername(),"bale");
+        Database.getDatabase().getConnections().insert(user6.getUsername(),"bale");
+        Database.getDatabase().getConnections().insert(user7.getUsername(),"bale");
+        Database.getDatabase().getConnections().insert(user8.getUsername(),"bale");
+        Database.getDatabase().getConnections().insert(user9.getUsername(),"bale");
     }
 }

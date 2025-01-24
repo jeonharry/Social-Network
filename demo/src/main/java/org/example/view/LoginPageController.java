@@ -62,7 +62,7 @@ public class LoginPageController implements Initializable {
     }
 
     @FXML
-    void login(MouseEvent event) throws IOException {
+    void login(MouseEvent event) {
         if(usernameEntered && passwordEntered)
         {
             try

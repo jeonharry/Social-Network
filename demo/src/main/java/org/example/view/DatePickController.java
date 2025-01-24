@@ -5,12 +5,9 @@ import controller.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Side;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
-import model.database.Database;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,9 +22,6 @@ public class DatePickController implements Initializable {
     private MenuButton month;
 
     @FXML
-    private VBox vbox;
-
-    @FXML
     private MenuButton year;
 
     @FXML
@@ -37,8 +31,8 @@ public class DatePickController implements Initializable {
 
     @FXML
     void next(MouseEvent event) throws IOException {
-        int m=getMonth(month.getText());
-        String d=year.getText()+"/"+String.valueOf(m)+"/"+date.getText();
+        int m = getMonth(month.getText());
+        String d = year.getText() + "/" + m + "/" + date.getText();
         UserController.getUserController().levelTwoSignup(d);
         UserPageController.setUser(UserController.getUserController().getUser());
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));

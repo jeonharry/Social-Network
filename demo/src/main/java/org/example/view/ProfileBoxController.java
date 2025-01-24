@@ -66,7 +66,7 @@ public class ProfileBoxController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        user=recentUser;
+        user = getRecentUser();
         username_lbl.setText(user.getUsername());
         fullName_lbl.setText(user.getFullName());
         ImagePattern imagePattern=new ImagePattern(new Image(user.getProfile()));
