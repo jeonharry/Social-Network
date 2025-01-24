@@ -39,6 +39,9 @@ public class ProfileBoxController implements Initializable {
     private User user;
 
     @FXML
+    private StackPane connect_btn;
+
+    @FXML
     void openProfile(MouseEvent event) throws IOException {
         UserPageController.setUser(Database.getDatabase().getUser(username_lbl.getText()));
         Controller.getController().getUsersProfiles().push(Database.getDatabase().getUser(username_lbl.getText()));
@@ -49,7 +52,14 @@ public class ProfileBoxController implements Initializable {
 
     @FXML
     void unfollow(MouseEvent event) throws IOException {
-        Database.getDatabase().getConnections().remove(user.getUsername(),UserController.getUserController().getUser().getUsername());
+        if(UserController.getUserController().getSuggestions().contains(user))
+        {
+            UserController.getUserController().getSuggestions().remove(user);
+        }
+        else
+        {
+            Database.getDatabase().getConnections().remove(user.getUsername(),UserController.getUserController().getUser().getUsername());
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ConnectionsPage.fxml"));
         Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
     }
@@ -61,11 +71,21 @@ public class ProfileBoxController implements Initializable {
         fullName_lbl.setText(user.getFullName());
         ImagePattern imagePattern=new ImagePattern(new Image(user.getProfile()));
         prof_img.setFill(imagePattern);
-        if(UserController.getUserController().getUser().getUsername().compareTo(Controller.getController().getUsersProfiles().peek().getUsername())!=0)
+        if(UserController.getUserController().getSuggestions().contains(user) && !Controller.getController().isInConnections())
+            connect_btn.setVisible(true);
+        else if(UserController.getUserController().getUser().getUsername().compareTo(Controller.getController().getUsersProfiles().peek().getUsername())!=0)
         {
             unfollow_btn.setVisible(false);
             unfollow_btn.setDisable(true);
         }
+    }
+
+    @FXML
+    void connect(MouseEvent event) throws IOException {
+        Database.getDatabase().getConnections().insert(user.getUsername(),UserController.getUserController().getUser().getUsername());
+        UserController.getUserController().updateSuggestions();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ConnectionsPage.fxml"));
+        Main.getStage().setScene(new Scene(fxmlLoader.load(),460,680));
     }
 
     public static User getRecentUser() {

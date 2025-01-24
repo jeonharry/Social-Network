@@ -60,6 +60,7 @@ public class Database {
     public void deleteUSer(User user){
         getUsers().remove(user.getUsername());
         getConnections().remove(user.getUsername());
+        orderOfSignup.remove(user.getUsername());
         users.values().forEach(account -> account.getPosts().forEach(post -> post.getComments().stream().filter(comment -> comment.getSender().equals(user)).forEach(comment -> comment.setSender(users.get("Deleted Account")))));
     }
 
@@ -83,7 +84,7 @@ public class Database {
         }
         int cnt = orderOfSignup.size()-1;
         while (answer.size() < 6 && cnt>=0){
-            if(!answer.contains(users.get(orderOfSignup.get(cnt))) && !connections.values(username).contains(orderOfSignup.get(cnt)) && !username.equals(orderOfSignup.get(cnt)))
+            if(!answer.contains(users.get(orderOfSignup.get(cnt))) && !connections.values(username).contains(orderOfSignup.get(cnt)) && username.compareTo(orderOfSignup.get(cnt))!=0)
                 answer.add(users.get(orderOfSignup.get(cnt)));
             cnt--;
         }

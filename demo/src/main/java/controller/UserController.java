@@ -5,6 +5,7 @@ import model.User;
 import model.database.Database;
 import model.exceptions.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,6 +13,7 @@ import java.util.regex.Pattern;
 public class UserController {
     private static UserController userController;
     private User user;
+    private ArrayList<User> suggestions;
     private UserController() {
     }
 
@@ -34,6 +36,7 @@ public class UserController {
         if(!Database.getDatabase().checkPassword(username,password))
             throw new WrongPassword();
         user=Database.getDatabase().getUser(username);
+        updateSuggestions();
     }
     public void logout()
     {
@@ -42,6 +45,7 @@ public class UserController {
     public void levelTwoSignup(String date) {
         user.setBirthdate(new Date(date));
         Database.getDatabase().add(user.getUsername(),user);
+        updateSuggestions();
     }
     public int checkPassword(String password){
         int score = 0;
@@ -85,7 +89,6 @@ public class UserController {
     public void editUser(String username, String fullName, String bio, String profile) throws UserNameExists {
         if(Database.getDatabase().exist(username))
             throw new UserNameExists();
-
         User newUser = new User(username,fullName,user.getPassword(),user.getEmail(),user.getBirthdate(),bio,profile);
         newUser.setPosts(user.getPosts());
         Database.getDatabase().editUser(user,newUser);
@@ -99,5 +102,13 @@ public class UserController {
 
     public void createNewPost(String image, String caption){
         getUser().getPosts().add(new Post(image,caption,user));
+    }
+
+    public ArrayList<User> getSuggestions() {
+        return suggestions;
+    }
+    public void updateSuggestions()
+    {
+        suggestions=Database.getDatabase().suggestions(user.getUsername());
     }
 }

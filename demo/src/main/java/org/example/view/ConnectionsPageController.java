@@ -10,8 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -59,6 +57,7 @@ public class ConnectionsPageController implements Initializable {
         connections.getChildren().addLast(label);
         for(String followings : Database.getDatabase().getConnections().values(user.getUsername()))
         {
+            Controller.getController().setInConnections(true);
             User followingUser=Database.getDatabase().getUser(followings);
             ProfileBoxController.setRecentUser(followingUser);
             try {
@@ -69,8 +68,9 @@ public class ConnectionsPageController implements Initializable {
         }
         label=makeLabel("Suggested For You");
         connections.getChildren().addLast(label);
-        for(User suggest: Database.getDatabase().suggestions(UserController.getUserController().getUser().getUsername()))
+        for(User suggest: UserController.getUserController().getSuggestions())
         {
+            Controller.getController().setInConnections(false);
             ProfileBoxController.setRecentUser(suggest);
             try {
                 connections.getChildren().addLast(new FXMLLoader(Main.class.getResource("ProfileBox.fxml")).load());

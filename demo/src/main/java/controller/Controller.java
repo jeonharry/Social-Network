@@ -2,10 +2,13 @@ package controller;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.OpenedPage;
 import model.Post;
 import model.User;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 public class Controller
@@ -16,6 +19,9 @@ public class Controller
     private Stack <Post> openedPosts;
     private Stack <OpenedPage> openedPages;
     private Label commentsCount;
+    private boolean isInConnections=true;
+    private boolean makeSure=false;
+    private Stage makeSureStage;
     private Controller(){
         usersProfiles=new Stack<>();
         openedPosts=new Stack<>();
@@ -62,5 +68,23 @@ public class Controller
     }
     public void setCommentsCount(Label commentsCount) {
         this.commentsCount = commentsCount;
+    }
+    public boolean isInConnections() {
+        return isInConnections;
+    }
+    public void setInConnections(boolean inConnections) {
+        isInConnections = inConnections;
+    }
+    public boolean isMakeSure() {
+        return makeSure;
+    }
+    public void setMakeSure(boolean makeSure) {
+        this.makeSure = makeSure;
+    }
+    public Stage getMakeSureStage() {
+        return makeSureStage;
+    }
+    public void setMakeSureStage(Stage makeSureStage) {
+        this.makeSureStage = makeSureStage;
     }
 }
