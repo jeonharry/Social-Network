@@ -189,40 +189,33 @@ public class UserPageController implements Initializable {
 
     @FXML
     void logout(MouseEvent event) throws IOException {
-        showPage();
-        if(Controller.getController().isMakeSure())
-        {
-            UserController.getUserController().logout();
-            Controller.getController().getUsersProfiles().pop();
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
-            Controller.getController().getRoot().getChildren().clear();
-            Controller.getController().getRoot().getChildren().add(fxmlLoader.load());
-        }
+        showPage("logout");
+    }
+    public static void logout() throws IOException {
+        UserController.getUserController().logout();
+        Controller.getController().getUsersProfiles().pop();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
+        Controller.getController().getRoot().getChildren().clear();
+        Controller.getController().getRoot().getChildren().addLast(fxmlLoader.load());
     }
 
-    private void showPage() throws IOException {
-        Stage stage=new Stage();
-        Controller.getController().setMakeSureStage(stage);
-        stage.setScene(new Scene(new FXMLLoader(Main.class.getResource("MakeSure.fxml")).load(),300,200));
-        stage.initOwner(Main.getStage());
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.setResizable(false);
-        stage.showAndWait();
+    private void showPage(String req) throws IOException {
+        MakeSureController.setReq(req);
+        FXMLLoader loader=new FXMLLoader(Main.class.getResource("MakeSure.fxml"));
+        Controller.getController().getRoot().getChildren().addLast(loader.load());
     }
     @FXML
     void deleteAccount(MouseEvent event) throws IOException {
-        showPage();
-        if(Controller.getController().isMakeSure())
-        {
-            UserController.getUserController().delete();
-            UserController.getUserController().logout();
-            Controller.getController().getUsersProfiles().pop();
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
-            Controller.getController().getRoot().getChildren().clear();
-            Controller.getController().getRoot().getChildren().add(fxmlLoader.load());
-        }
+        showPage("deleteAcc");
     }
-
+    public static void deleteAccount() throws IOException {
+        UserController.getUserController().delete();
+        UserController.getUserController().logout();
+        Controller.getController().getUsersProfiles().pop();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("LoginPage.fxml"));
+        Controller.getController().getRoot().getChildren().clear();
+        Controller.getController().getRoot().getChildren().add(fxmlLoader.load());
+    }
     @FXML
     void labelChangeColorEnter(MouseEvent event) {
         if(((Label)event.getTarget()).getText().compareTo("Edit Profile")==0)

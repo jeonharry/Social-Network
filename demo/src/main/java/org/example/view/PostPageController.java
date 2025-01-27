@@ -122,24 +122,18 @@ public class PostPageController implements Initializable {
 
     @FXML
     void deletePost(MouseEvent event) throws IOException {
-        makeSure();
-        if(Controller.getController().isMakeSure())
-        {
-            openedPost.getOwner().getPosts().remove(openedPost);
-            back();
-        }
+        makeSure("deletePost");
     }
 
-    private void makeSure() throws IOException {
-        Stage stage=new Stage();
-        Controller.getController().setMakeSureStage(stage);
-        stage.setScene(new Scene(new FXMLLoader(Main.class.getResource("MakeSure.fxml")).load(),300,200));
-        stage.initOwner(Main.getStage());
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.setX(490);
-        stage.setY(200);
-        stage.setResizable(false);
-        stage.showAndWait();
+    public static void deletePost() throws IOException {
+        openedPost.getOwner().getPosts().remove(openedPost);
+        back();
+    }
+
+    private void makeSure(String req) throws IOException {
+        MakeSureController.setReq(req);
+        FXMLLoader loader=new FXMLLoader(Main.class.getResource("MakeSure.fxml"));
+        Controller.getController().getRoot().getChildren().addLast(loader.load());
     }
 
     @FXML
@@ -149,7 +143,7 @@ public class PostPageController implements Initializable {
         Main.getStage().setScene(new Scene(fxmlLoader.load(),700,650));
     }
 
-    private void back() throws IOException {
+    private static void back() throws IOException {
         UserPageController.setUser(Controller.getController().getUsersProfiles().peek());
         Controller.getController().getOpenedPosts().pop();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserPage.fxml"));

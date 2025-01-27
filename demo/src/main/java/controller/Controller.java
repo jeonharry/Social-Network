@@ -18,8 +18,6 @@ public class Controller
     private final Stack <OpenedPage> openedPages;
     private Label commentsCount;
     private boolean isInConnections=true;
-    private boolean makeSure=false;
-    private Stage makeSureStage;
     private Controller(){
         usersProfiles=new Stack<>();
         openedPosts=new Stack<>();
@@ -60,17 +58,5 @@ public class Controller
     }
     public void setInConnections(boolean inConnections) {
         isInConnections = inConnections;
-    }
-    public boolean isMakeSure() {
-        return makeSure;
-    }
-    public void setMakeSure(boolean makeSure) {
-        this.makeSure = makeSure;
-    }
-    public Stage getMakeSureStage() {
-        return makeSureStage;
-    }
-    public void setMakeSureStage(Stage makeSureStage) {
-        this.makeSureStage = makeSureStage;
     }
 }
