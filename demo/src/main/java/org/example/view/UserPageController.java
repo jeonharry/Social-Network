@@ -151,7 +151,7 @@ public class UserPageController implements Initializable {
             vBox_root.getChildren().remove(notConnectInfo);
             vBox_root.getChildren().remove(connect_btn);
             scrollPane.setPrefViewportHeight(300.0);
-            scrollPane.setMinViewportHeight(250.0);
+            scrollPane.setMinViewportHeight(290.0);
             img_plus.setLayoutY(340.0);
             line.setLayoutY(330.0);
             if(user.getPosts().isEmpty())
