@@ -245,7 +245,7 @@
                   <Image url="@pics/Screenshot_2025012_Instagram%5B1%5D.png" />
                </image>
             </ImageView>
-            <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="25.0" layoutY="25.0" minViewportHeight="200.0" minViewportWidth="630.0" prefHeight="216.0" prefViewportHeight="200.0" prefViewportWidth="630.0" prefWidth="651.0" style="-fx-background-color: black;" stylesheets="@StyleScrollBar.css">
+            <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="25.0" layoutY="20.0" minViewportHeight="200.0" minViewportWidth="630.0" prefHeight="232.0" prefViewportHeight="200.0" prefViewportWidth="630.0" prefWidth="651.0" style="-fx-background-color: black;" stylesheets="@StyleScrollBar.css">
                <content>
                   <GridPane fx:id="grid_posts" alignment="TOP_CENTER" hgap="5.0" maxHeight="440.0" maxWidth="724.0" minWidth="-Infinity" prefHeight="422.0" prefWidth="622.0" style="-fx-background-color: black;" vgap="5.0">
                      <columnConstraints>
