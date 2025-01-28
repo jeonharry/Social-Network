@@ -16,8 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.shape.Line;
 import model.OpenedPage;
 import model.Post;
 import model.User;
@@ -37,6 +36,9 @@ public class UserPageController implements Initializable {
 
     @FXML
     private ImageView img_menu;
+
+    @FXML
+    private ImageView img_plus;
 
     @FXML
     private Label lbl_bio;
@@ -84,6 +86,12 @@ public class UserPageController implements Initializable {
 
     @FXML
     private StackPane connect_btn;
+
+    @FXML
+    private VBox vBox_root;
+
+    @FXML
+    private Line line;
 
     @FXML
     void newPost(MouseEvent event) throws IOException {
@@ -140,6 +148,12 @@ public class UserPageController implements Initializable {
         int counter = 0;
         if(Database.getDatabase().getConnections().values(UserController.getUserController().getUser().getUsername()).contains(user.getUsername()) || user.getUsername().compareTo(UserController.getUserController().getUser().getUsername())==0)
         {
+            vBox_root.getChildren().remove(notConnectInfo);
+            vBox_root.getChildren().remove(connect_btn);
+            scrollPane.setPrefViewportHeight(300.0);
+            scrollPane.setMinViewportHeight(250.0);
+            img_plus.setLayoutY(340.0);
+            line.setLayoutY(330.0);
             if(user.getPosts().isEmpty())
             {
                 noPost_img.setVisible(true);
@@ -147,9 +161,6 @@ public class UserPageController implements Initializable {
             }
             else
                 scrollPane.setVisible(true);
-            notConnectInfo.setVisible(false);
-            connect_btn.setVisible(false);
-            connect_btn.setDisable(true);
             for(Post post : user.getPosts()){
                 ImagePostController.setRecently(post);
                 try {
